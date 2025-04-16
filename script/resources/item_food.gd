@@ -1,4 +1,3 @@
-# food_item.gd
 class_name FoodItem extends Item
 
 @export var health_restore: int = 0
@@ -10,7 +9,7 @@ func _init():
 	max_stack_size = 99
 
 func use(player) -> bool:
-	# 恢复生命值和饥饿值
+	# Restore health and hunger
 	player.restore_health(health_restore)
 	player.restore_hunger(hunger_restore)
 	return true
