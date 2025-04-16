@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://doldniv3colwn"]
+
+[ext_resource type="Script" path="res://script/item.gd" id="1_3bg47"]
+[ext_resource type="Texture2D" uid="uid://bug203yny2hlw" path="res://assets/tools/Tools Asset 16x16/08.png" id="2_mmdmy"]
+
+[resource]
+script = ExtResource("1_3bg47")
+id = "axe"
+texture = ExtResource("2_mmdmy")
+stackable = false
+max_stack = 1

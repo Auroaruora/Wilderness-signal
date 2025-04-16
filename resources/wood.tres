@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bqy4n7ikjmqgc"]
+
+[ext_resource type="Script" path="res://script/item.gd" id="1_aw4dc"]
+[ext_resource type="Texture2D" uid="uid://boumbvn08wrt6" path="res://assets/tools/Tools Asset 16x16/53.png" id="2_7c4r2"]
+
+[resource]
+script = ExtResource("1_aw4dc")
+id = "wood"
+texture = ExtResource("2_7c4r2")
+stackable = true
+max_stack = 99

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ggaxlea8gisp"]
+
+[ext_resource type="Script" path="res://script/choppable_tree.gd" id="1_v22ca"]
+[ext_resource type="Texture2D" uid="uid://b8cam40qcpwrw" path="res://assets/enviorment/Trees_source.png" id="2_ul18p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y0u"]
+size = Vector2(14, 12)
+
+[node name="ChoppableTree" type="StaticBody2D"]
+script = ExtResource("1_v22ca")
+
+[node name="StumpSprite" type="Sprite2D" parent="."]
+position = Vector2(1, 14)
+texture = ExtResource("2_ul18p")
+region_enabled = true
+region_rect = Rect2(528, 144, 16, 16)
+
+[node name="TreeSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ul18p")
+region_enabled = true
+region_rect = Rect2(288, 144, 32, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 13)
+shape = SubResource("RectangleShape2D_i6y0u")

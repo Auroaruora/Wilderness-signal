@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlsmxo5r4d30y"]
+
+[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="1_p0hau"]
+[ext_resource type="Resource" uid="uid://doldniv3colwn" path="res://resources/axe.tres" id="2_ayl3f"]
+[ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="3_us0fp"]
+[ext_resource type="Resource" uid="uid://bqy4n7ikjmqgc" path="res://resources/wood.tres" id="4_6fods"]
+
+[node name="testfield" type="Node2D"]
+
+[node name="axe" parent="." instance=ExtResource("1_p0hau")]
+position = Vector2(60, 38)
+item_resource = ExtResource("2_ayl3f")
+
+[node name="Character" parent="." instance=ExtResource("3_us0fp")]
+position = Vector2(14, 49)
+
+[node name="wood" parent="." instance=ExtResource("1_p0hau")]
+position = Vector2(36, 84)
+item_resource = ExtResource("4_6fods")
+
+[node name="wood2" parent="." instance=ExtResource("1_p0hau")]
+position = Vector2(3, 84)
+item_resource = ExtResource("4_6fods")
+
+[node name="wood3" parent="." instance=ExtResource("1_p0hau")]
+position = Vector2(-33, 84)
+item_resource = ExtResource("4_6fods")
