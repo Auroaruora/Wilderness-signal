@@ -283,7 +283,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k2g1i")
 }],
-"loop": true,
+"loop": false,
 "name": &"axe_down",
 "speed": 13.0
 }, {
@@ -306,7 +306,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cotnt")
 }],
-"loop": true,
+"loop": false,
 "name": &"axe_left",
 "speed": 13.0
 }, {
@@ -329,7 +329,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a70qw")
 }],
-"loop": true,
+"loop": false,
 "name": &"axe_right",
 "speed": 13.0
 }, {
@@ -352,7 +352,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_odnix")
 }],
-"loop": true,
+"loop": false,
 "name": &"axe_up",
 "speed": 13.0
 }, {
@@ -518,7 +518,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrj47"]
-size = Vector2(13, 14)
+size = Vector2(12, 9)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_t3h3h")
@@ -526,10 +526,10 @@ script = ExtResource("1_t3h3h")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_qv582")
-animation = &"axe_right"
+animation = &"axe_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -7)
+position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_wrj47")
 
 [node name="Camera2D" type="Camera2D" parent="."]
