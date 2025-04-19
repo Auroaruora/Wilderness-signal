@@ -1,11 +1,10 @@
-[gd_scene load_steps=73 format=3 uid="uid://dac4he6sdh3fu"]
+[gd_scene load_steps=72 format=3 uid="uid://dac4he6sdh3fu"]
 
 [ext_resource type="Texture2D" uid="uid://dus8xw8mhe40c" path="res://assets/characters/idle.png" id="1_1usea"]
 [ext_resource type="Script" path="res://script/character.gd" id="1_t3h3h"]
 [ext_resource type="Texture2D" uid="uid://wvu3xkve2pe7" path="res://assets/characters/run.png" id="2_k23vb"]
 [ext_resource type="Texture2D" uid="uid://d05xh44ncxa2s" path="res://assets/characters/axe.png" id="2_qlx4k"]
 [ext_resource type="Script" path="res://script/inventory.gd" id="5_kiqmf"]
-[ext_resource type="PackedScene" uid="uid://upkv6brh157k" path="res://scenes/inventory_ui.tscn" id="6_tsh77"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4kia"]
 atlas = ExtResource("2_qlx4k")
@@ -357,6 +356,26 @@ animations = [{
 "name": &"axe_up",
 "speed": 13.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"hammer_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hammer_left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hammer_right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hammer_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rwe5k")
@@ -527,7 +546,7 @@ script = ExtResource("1_t3h3h")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_qv582")
-animation = &"axe_down"
+animation = &"hammer_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -4)
@@ -538,5 +557,3 @@ zoom = Vector2(5, 5)
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("5_kiqmf")
-
-[node name="Inventory UI" parent="." instance=ExtResource("6_tsh77")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1a1y0g4lk6y7"]
+
+[ext_resource type="Script" path="res://script/single_slot.gd" id="1_27448"]
+[ext_resource type="Resource" uid="uid://bqy4n7ikjmqgc" path="res://resources/wood.tres" id="2_dy3xh"]
+
+[node name="SingleSlot" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_27448")
+item_resource = ExtResource("2_dy3xh")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

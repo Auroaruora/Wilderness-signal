@@ -1,5 +1,5 @@
-# InventorySlot.gd
-class_name InventorySlot
+# SingleSlot.gd
+class_name SingleSlot
 extends Panel
 
 # Export the item resource so it can be set in the editor

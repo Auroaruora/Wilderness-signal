@@ -56,6 +56,12 @@ func setup_action_handlers() -> void:
 		func(): attempt_tree_cut(),  # Action
 		"axe_"  # Animation prefix
 	)
+	add_action(
+		"hammer", 
+		func(): return true,  # Always available since we check elsewhere
+		func(): print("Hammering action"),  # This will be overridden by the tower
+		"hammer_"  # Animation prefix
+	)
 	# You can easily add more actions like this
 	# add_action(
 	# 	"fishing_rod", 
