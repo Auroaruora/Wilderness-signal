@@ -95,13 +95,13 @@ func attempt_tree_cut() -> void:
 		# Determine the cutting direction and character facing
 		var relative_pos = closest_tree.global_position - global_position
 		
-		# Determine the most appropriate character animation direction
-		if abs(relative_pos.x) > abs(relative_pos.y):
-			# Primarily horizontal movement
-			current_direction = Direction.LEFT if relative_pos.x < 0 else Direction.RIGHT
-		else:
-			# Primarily vertical movement
-			current_direction = Direction.UP if relative_pos.y < 0 else Direction.DOWN
+		## Determine the most appropriate character animation direction
+		#if abs(relative_pos.x) > abs(relative_pos.y):
+			## Primarily horizontal movement
+			#current_direction = Direction.LEFT if relative_pos.x < 0 else Direction.RIGHT
+		#else:
+			## Primarily vertical movement
+			#current_direction = Direction.UP if relative_pos.y < 0 else Direction.DOWN
 		
 		# Determine 2D cutting direction for the tree
 		var cut_direction = "left" if relative_pos.x < 0 else "right"
@@ -236,12 +236,10 @@ func pickup_item(item):
 	inventory.print_inventory()
 	return success
 
-# Check if the character is close enough to interact with an object
-func is_close_to_object(object_position: Vector2, max_distance: float = 20.0) -> bool:
+func is_close_to_object(object_position: Vector2, max_distance: float = 30.0) -> bool:
 	var distance = global_position.distance_to(object_position)
 	return distance <= max_distance
 
-# Modify the existing get_interaction_direction method
 func get_interaction_direction(object_position: Vector2) -> String:
 	var relative_pos = object_position - global_position
 	

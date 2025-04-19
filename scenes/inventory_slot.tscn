@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://def00m6newkqx"]
+
+[ext_resource type="Texture2D" uid="uid://bty4jtflvjagt" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HotkeyBox_34x34.png" id="1_ic5wu"]
+[ext_resource type="Script" path="res://scenes/inventory_slot.gd" id="1_ojrkw"]
+[ext_resource type="Texture2D" uid="uid://u6e0j84jc3g2" path="res://assets/tools/Tools Asset 16x16/50.png" id="3_xwoc5"]
+
+[node name="InventorySlot" type="Panel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -84.0
+offset_right = 40.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_ojrkw")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+scale = Vector2(2.518, 2.55)
+texture = ExtResource("1_ic5wu")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+position = Vector2(39, 39)
+scale = Vector2(3.375, 3.5625)
+texture = ExtResource("3_xwoc5")
+
+[node name="Number" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 36.0
+offset_bottom = 29.0
