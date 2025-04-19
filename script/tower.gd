@@ -1,4 +1,4 @@
-class_name RepairableTower extends Node2D
+class_name RepairableTower extends StaticBody2D
 
 @export var item_resource: Item = null
 

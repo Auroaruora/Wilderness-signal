@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7tiv4lsxvwjn"]
+[gd_scene load_steps=5 format=3 uid="uid://c7tiv4lsxvwjn"]
 
 [ext_resource type="Texture2D" uid="uid://ck5qwtc20aoaw" path="res://assets/enviorment/tower.png" id="1_p00mb"]
 [ext_resource type="Script" path="res://script/tower.gd" id="1_wmlhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2p7e"]
-size = Vector2(22, 13)
+size = Vector2(41, 24.4375)
 
-[node name="Tower" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssiux"]
+radius = 4.0
+height = 16.0
+
+[node name="Tower" type="StaticBody2D"]
 script = ExtResource("1_wmlhn")
 
 [node name="BrokenSprite" type="Sprite2D" parent="."]
@@ -22,8 +26,13 @@ region_rect = Rect2(0, 0, 32, 64)
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0, 23.5)
+position = Vector2(0.5, 23.7812)
 shape = SubResource("RectangleShape2D_l2p7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ssiux")
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

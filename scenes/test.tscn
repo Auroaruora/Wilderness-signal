@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://de2c4d7ehlj68"]
+[gd_scene load_steps=6 format=3 uid="uid://de2c4d7ehlj68"]
 
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="1_87eck"]
 [ext_resource type="PackedScene" uid="uid://ggaxlea8gisp" path="res://scenes/choppable_tree.tscn" id="2_kbfqp"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="3_t5gbh"]
 [ext_resource type="Resource" uid="uid://doldniv3colwn" path="res://resources/axe.tres" id="4_70bqs"]
+[ext_resource type="PackedScene" uid="uid://c7tiv4lsxvwjn" path="res://scenes/tower.tscn" id="5_87ywx"]
 
 [node name="test" type="Node2D"]
 
@@ -16,3 +17,6 @@ position = Vector2(313, 367)
 [node name="PickableItem" parent="." instance=ExtResource("3_t5gbh")]
 position = Vector2(265, 411)
 item_resource = ExtResource("4_70bqs")
+
+[node name="Tower" parent="." instance=ExtResource("5_87ywx")]
+position = Vector2(360, 354)
