@@ -7,8 +7,10 @@ class_name RepairableTower extends StaticBody2D
 @onready var repaired_sprite = $RepairedSprite
 @onready var interaction_area = $InteractionArea
 
+#TODO: required item needs to be changed
+
 @export var wood_required = 2
-@export var interaction_distance = 30.0
+@export var interaction_distance = 40.0
 
 var is_broken = true
 var player_ref = null

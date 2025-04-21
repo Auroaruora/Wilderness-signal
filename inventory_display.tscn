@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://bib063ijjum55"]
+
+[ext_resource type="Script" path="res://inventory_display.gd" id="1_vph36"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8pgn"]
+bg_color = Color(0.803922, 0.52549, 0.321569, 0.803922)
+corner_detail = 4
+
+[node name="InventoryDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_vph36")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q8pgn")
+
+[node name="SlotContainer" type="HBoxContainer" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Slot1" type="Panel" parent="BackgroundPanel/SlotContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Slot2" type="Panel" parent="BackgroundPanel/SlotContainer"]
+layout_mode = 2
+
+[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Slot3" type="Panel" parent="BackgroundPanel/SlotContainer"]
+layout_mode = 2
+
+[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TooltipLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

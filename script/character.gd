@@ -47,6 +47,10 @@ func _ready() -> void:
 	# Initialize default animations
 	setup_action_handlers()
 	play_idle_animation()
+	# Connect inventory to display
+	if has_node("InventoryUI/InventoryDisplay") and has_node("Inventory"):
+		$InventoryUI/InventoryDisplay.inventory = $Inventory
+		print("Connected inventory to display")
 
 func setup_action_handlers() -> void:
 	# Generic method to add actions more easily
