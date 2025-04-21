@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du8a3w7m6653h"
-path="res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"
+uid="uid://biyr406otvsu5"
+path="res://.godot/imported/Big-wooden-fence-2.png-e6f75b3fd0f3fde1217fe8c6962c683f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/tree.png"
-dest_files=["res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"]
+source_file="res://assets/enviorment/Small Forest Asset Pack/Fences/Big wooden fence/Big-wooden-fence-2.png"
+dest_files=["res://.godot/imported/Big-wooden-fence-2.png-e6f75b3fd0f3fde1217fe8c6962c683f.ctex"]
 
 [params]
 

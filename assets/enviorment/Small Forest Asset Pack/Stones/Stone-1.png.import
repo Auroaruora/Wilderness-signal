@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du8a3w7m6653h"
-path="res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"
+uid="uid://c4uuul2s17ewk"
+path="res://.godot/imported/Stone-1.png-3b2f19766b875ea8eff86d9d5dab5d3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/tree.png"
-dest_files=["res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"]
+source_file="res://assets/enviorment/Small Forest Asset Pack/Stones/Stone-1.png"
+dest_files=["res://.godot/imported/Stone-1.png-3b2f19766b875ea8eff86d9d5dab5d3e.ctex"]
 
 [params]
 

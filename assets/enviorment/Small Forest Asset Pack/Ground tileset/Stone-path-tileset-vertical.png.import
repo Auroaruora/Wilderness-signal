@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du8a3w7m6653h"
-path="res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"
+uid="uid://btfef2wrriy40"
+path="res://.godot/imported/Stone-path-tileset-vertical.png-a329b1be30fc4a14e4e2d93588a88333.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/tree.png"
-dest_files=["res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"]
+source_file="res://assets/enviorment/Small Forest Asset Pack/Ground tileset/Stone-path-tileset-vertical.png"
+dest_files=["res://.godot/imported/Stone-path-tileset-vertical.png-a329b1be30fc4a14e4e2d93588a88333.ctex"]
 
 [params]
 

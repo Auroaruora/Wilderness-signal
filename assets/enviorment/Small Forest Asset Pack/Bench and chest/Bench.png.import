@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du8a3w7m6653h"
-path="res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"
+uid="uid://dk7qn2w0ihvkx"
+path="res://.godot/imported/Bench.png-d026a1f79bb6423b006e8482590a76c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/tree.png"
-dest_files=["res://.godot/imported/tree.png-93adc860ccf9b2bf7ea389dcc94b6f3d.ctex"]
+source_file="res://assets/enviorment/Small Forest Asset Pack/Bench and chest/Bench.png"
+dest_files=["res://.godot/imported/Bench.png-d026a1f79bb6423b006e8482590a76c8.ctex"]
 
 [params]
 

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://script/choppable_tree.gd" id="1_fgfxt"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="2_ch1mh"]
-[ext_resource type="Texture2D" uid="uid://ch0td2pae20bk" path="res://assets/enviorment/tree.png" id="2_v2sik"]
+[ext_resource type="Texture2D" uid="uid://du8a3w7m6653h" path="res://assets/enviorment/tree.png" id="2_v2sik"]
 [ext_resource type="Resource" uid="uid://bqy4n7ikjmqgc" path="res://resources/wood.tres" id="3_u5qm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y0u"]
-size = Vector2(10, 11)
+size = Vector2(13, 16.5)
 
 [node name="ChoppableTree" type="StaticBody2D"]
 script = ExtResource("1_fgfxt")
@@ -17,25 +17,27 @@ wood_resource = ExtResource("3_u5qm7")
 position = Vector2(22, 9)
 
 [node name="StumpSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 12)
+position = Vector2(0, -12)
+scale = Vector2(0.954, 1)
 texture = ExtResource("2_v2sik")
 region_enabled = true
-region_rect = Rect2(72, 24, 16, 16)
+region_rect = Rect2(64, 0, 32, 48)
 
 [node name="TreeSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
 texture = ExtResource("2_v2sik")
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 40)
+region_rect = Rect2(0, 0, 32, 48)
 
 [node name="TreePivot" type="Node2D" parent="."]
 position = Vector2(0, 16)
 
 [node name="CutTreeSprite" type="Sprite2D" parent="TreePivot"]
-position = Vector2(0, -16)
+position = Vector2(0, -28)
 texture = ExtResource("2_v2sik")
 region_enabled = true
-region_rect = Rect2(32, 0, 32, 40)
+region_rect = Rect2(32, 0, 32, 48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 15)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_i6y0u")

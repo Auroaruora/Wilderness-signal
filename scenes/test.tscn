@@ -8,11 +8,11 @@
 
 [node name="test" type="Node2D"]
 
-[node name="Character" parent="." instance=ExtResource("1_87eck")]
-position = Vector2(277, 370)
-
 [node name="ChoppableTree" parent="." instance=ExtResource("2_kbfqp")]
 position = Vector2(313, 367)
+
+[node name="Character" parent="." instance=ExtResource("1_87eck")]
+position = Vector2(277, 370)
 
 [node name="PickableItem" parent="." instance=ExtResource("3_t5gbh")]
 position = Vector2(265, 411)
