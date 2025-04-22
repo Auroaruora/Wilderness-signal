@@ -921,7 +921,3 @@ script = ExtResource("5_kiqmf")
 layer = 10
 
 [node name="InventoryDisplay" parent="InventoryUI" instance=ExtResource("8_tlohn")]
-anchors_preset = 12
-anchor_left = 0.0
-anchor_right = 1.0
-offset_bottom = 0.0

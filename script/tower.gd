@@ -1,13 +1,10 @@
 class_name RepairableTower extends StaticBody2D
 
 @export var item_resource: Item = null
-
 # Two sprites for different tower states
 @onready var broken_sprite = $BrokenSprite
 @onready var repaired_sprite = $RepairedSprite
 @onready var interaction_area = $InteractionArea
-
-#TODO: required item needs to be changed
 
 @export var wood_required = 2
 @export var interaction_distance = 40.0
@@ -30,14 +27,14 @@ func is_player_close() -> bool:
 	return player_ref.is_close_to_object(global_position, interaction_distance)
 
 func attempt_repair():
-	# Check if player has wood
+	# Check if player has enough wood
 	if player_ref.inventory.get_stack_count("wood") >= wood_required:
-		# Create a new action for repairing
-		var repair_action = player_ref.CharacterAction.new(
-			"hammer",
+		# Modify the action handling to work with the existing attempt_action method
+		player_ref.add_action(
+			"tower_repair",  # Unique action name
 			func(): return true,  # Always allow this action once we reach this point
 			func(): consume_wood_and_repair(),  # What happens on completion
-			"hammer_"  # Animation prefix for "hammer_up", "hammer_down", etc.
+			"hammer_"  # Animation prefix
 		)
 		
 		# Determine facing direction relative to tower
@@ -47,31 +44,24 @@ func attempt_repair():
 		else:
 			player_ref.current_direction = player_ref.Direction.RIGHT
 		
-		# Perform the hammering action
-		player_ref.perform_generic_action(repair_action)
+		# Perform the hammering action using the string-based method
+		player_ref.attempt_action("tower_repair")
 
 func consume_wood_and_repair():
-	# Create a wood item to remove from inventory
-	var wood_item = {
-		"id": "wood",
-		"stackable": true,
-		"stack_count": wood_required,
-		"max_stack": 99
-	}
-	
-	# Remove wood from inventory (this needs to match your item structure)
-	for i in range(wood_required):
-		for item in player_ref.inventory.items:
-			if item.id == "wood":
-				if item.stack_count > 1:
-					item.stack_count -= 1
-				else:
-					player_ref.inventory.remove_item(item)
-				break
-	
-	# Repair the tower
-	repair_tower()
+	# Create a temporary wood item to use with remove_item
+	var wood_item = Item.new()
+	wood_item.id = "wood"
+	wood_item.stackable = true
+	wood_item.stack_count = wood_required
+	wood_item.max_stack = 99  # Assuming a high max stack value
 
+	# Attempt to remove wood from inventory
+	if player_ref.inventory.remove_item(wood_item, wood_required):
+		# If wood removal is successful, repair the tower
+		repair_tower()
+	else:
+		# This should rarely happen, but good to have a fallback
+		print("Failed to remove wood for tower repair")
 func repair_tower():
 	# Change sprite
 	broken_sprite.visible = false
@@ -84,11 +74,6 @@ func repair_tower():
 func _on_interaction_area_body_entered(body):
 	if body is Character:  # Using the class_name from your Character script
 		player_ref = body
-
-#func _on_interaction_area_area_exited(body):
-	#if body is Character and player_ref == body:
-		#player_ref = null
-
 
 func _on_interaction_area_body_exited(body):
 	if body is Character and player_ref == body:

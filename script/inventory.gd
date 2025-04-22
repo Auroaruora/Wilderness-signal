@@ -4,7 +4,7 @@ extends Node
 
 signal item_added(item)
 signal item_removed(item)
-
+signal item_modified(item)
 var items = []
 var max_items = 10
 
@@ -27,11 +27,30 @@ func add_item(item):
 		return true
 	return false
 	
-func remove_item(item):
-	if items.has(item):
-		items.erase(item)
-		emit_signal("item_removed", item)
-		return true
+func remove_item(item, amount = 1):
+	# Find the item in the inventory
+	for existing_item in items:
+		if existing_item.id == item.id:
+			if existing_item.stackable:
+				# Check if there are enough items in the stack
+				if existing_item.stack_count < amount:
+					return false
+				
+				# For stackable items, reduce stack count
+				existing_item.stack_count -= amount
+				
+				# If stack count reaches 0, remove the item completely
+				if existing_item.stack_count == 0:
+					items.erase(existing_item)
+				
+				emit_signal("item_removed", existing_item)
+				return true
+			else:
+				# For non-stackable items, ensure we have the item
+				items.erase(existing_item)
+				emit_signal("item_removed", existing_item)
+				return true
+	
 	return false
 	
 func has_item(item_id):

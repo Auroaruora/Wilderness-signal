@@ -27,6 +27,8 @@ func _ready():
 		# Connect signals from the inventory
 		inventory.item_added.connect(_on_item_added)
 		inventory.item_removed.connect(_on_item_removed)
+		inventory.item_modified.connect(_on_item_modified)
+		
 		print("InventoryDisplay: Connected signals")
 	else:
 		print("InventoryDisplay: No Inventory node found!")
@@ -41,6 +43,10 @@ func _ready():
 	tooltip.visible = false
 	
 	# Initial display update
+	update_inventory_display()
+
+# Add this handler
+func _on_item_modified(item):
 	update_inventory_display()
 
 func collect_slots():
@@ -58,6 +64,8 @@ func collect_slots():
 			child.mouse_entered.connect(_on_slot_mouse_entered.bind(index))
 			child.mouse_exited.connect(_on_slot_mouse_exited.bind(index))
 
+# In the InventoryDisplay script
+
 func update_inventory_display():
 	if not inventory:
 		print("No inventory connected to display")
@@ -71,6 +79,9 @@ func update_inventory_display():
 		var stack_label = slot.get_node("StackLabel")
 		stack_label.visible = false
 	
+	# Add debug print to see what items are being processed
+	print("Inventory items: ", inventory.items)
+	
 	# Fill slots with inventory items
 	for i in range(inventory.items.size()):
 		if i >= slots.size():
@@ -78,6 +89,9 @@ func update_inventory_display():
 			
 		var item = inventory.items[i]
 		var slot = slots[i]
+		
+		# Add debug print for each item
+		print("Processing item: ", item.id, " with stack count: ", item.stack_count)
 		
 		# Set item texture
 		var texture_rect = slot.get_node("ItemTexture")
@@ -88,12 +102,10 @@ func update_inventory_display():
 		if item.stackable and item.stack_count > 1:
 			stack_label.text = str(item.stack_count)
 			stack_label.visible = true
+			# Add debug print to confirm label settings
+			print("Setting stack label for ", item.id, " to: ", stack_label.text, " visible: ", stack_label.visible)
 		else:
 			stack_label.visible = false
-	
-	# Debug output
-	print("Updated inventory display with " + str(inventory.items.size()) + " items")
-
 func select_slot(index: int):
 	# Deselect previous slot
 	if selected_slot != -1 and selected_slot < slots.size():
