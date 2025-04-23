@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://dac4he6sdh3fu"]
+[gd_scene load_steps=124 format=3 uid="uid://dac4he6sdh3fu"]
 
 [ext_resource type="Texture2D" uid="uid://dus8xw8mhe40c" path="res://assets/characters/idle.png" id="1_1usea"]
 [ext_resource type="Script" path="res://script/character.gd" id="1_t3h3h"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://xwcehrxecqut" path="res://assets/characters/hammer.png" id="3_d17td"]
 [ext_resource type="Texture2D" uid="uid://bhb4yynwqxxp0" path="res://assets/characters/pickaxe.png" id="5_8m3t4"]
 [ext_resource type="Script" path="res://script/inventory.gd" id="5_kiqmf"]
-[ext_resource type="PackedScene" uid="uid://bib063ijjum55" path="res://inventory_display.tscn" id="8_tlohn"]
+[ext_resource type="PackedScene" uid="uid://bib063ijjum55" path="res://scenes/inventory_display.tscn" id="8_tlohn"]
+[ext_resource type="PackedScene" uid="uid://cv85um35dllay" path="res://scenes/status_display.tscn" id="8_vpj0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4kia"]
 atlas = ExtResource("2_qlx4k")
@@ -919,5 +920,7 @@ script = ExtResource("5_kiqmf")
 
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="StatusDisplay" parent="InventoryUI" instance=ExtResource("8_vpj0g")]
 
 [node name="InventoryDisplay" parent="InventoryUI" instance=ExtResource("8_tlohn")]

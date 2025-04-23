@@ -197,8 +197,10 @@ func perform_generic_action(action_data) -> void:
 	var action_animation = get_directional_animation(action_data.animation_prefix)
 	animated_sprite.play(action_animation)
 	
-	# Connect to animation finished signal
-	animated_sprite.animation_finished.connect(_on_action_animation_finished)
+	# Connect to animation finished signal only if not already connected
+	if not animated_sprite.animation_finished.is_connected(_on_action_animation_finished):
+		animated_sprite.animation_finished.connect(_on_action_animation_finished)
+
 	
 	# Perform the specific action
 	action_data.action.call()
