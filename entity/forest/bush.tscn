@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx1hhu4mlvfqt"]
+
+[ext_resource type="Script" path="res://entity/entity.gd" id="1_cy011"]
+[ext_resource type="Texture2D" uid="uid://o3raaupolh7r" path="res://entity/assets/bush.tres" id="2_8vhgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xs2x"]
+size = Vector2(9, 7.5)
+
+[node name="Spruce Tree" type="Node2D"]
+script = ExtResource("1_cy011")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_8vhgj")
+offset = Vector2(0, -4)
+region_rect = Rect2(256, 240, 16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -4.25)
+shape = SubResource("RectangleShape2D_0xs2x")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dooummp6f7drk"]
+
+[ext_resource type="Script" path="res://entity/entity.gd" id="1_o1x8b"]
+[ext_resource type="Texture2D" uid="uid://rc60jogumb4p" path="res://entity/assets/two_rock.tres" id="2_me6ba"]
+
+[node name="GrasslandRock" type="Node2D"]
+position = Vector2(0, -5)
+script = ExtResource("1_o1x8b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 6)
+texture = ExtResource("2_me6ba")
+offset = Vector2(0, -1)
+region_rect = Rect2(64, 160, 16, 16)

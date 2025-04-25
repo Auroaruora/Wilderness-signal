@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Biome" load_steps=6 format=3 uid="uid://b2bwdpucjt8g0"]
+
+[ext_resource type="Script" path="res://map/biome.gd" id="1_duris"]
+[ext_resource type="Script" path="res://map/map_scene.gd" id="1_n3uvn"]
+
+[sub_resource type="Resource" id="Resource_o3se3"]
+script = ExtResource("1_n3uvn")
+weight = 2000
+
+[sub_resource type="Resource" id="Resource_2uey6"]
+metadata/__load_path__ = "res://entity/beach/reeds.tscn"
+
+[sub_resource type="Resource" id="Resource_7o4e1"]
+script = ExtResource("1_n3uvn")
+scene = SubResource("Resource_2uey6")
+weight = 20
+
+[resource]
+script = ExtResource("1_duris")
+terrain_id = 1
+map_scenes = Array[ExtResource("1_n3uvn")]([SubResource("Resource_o3se3"), SubResource("Resource_7o4e1")])
+indoors = false
+is_cave = false
+cave_wall_scenes = Array[ExtResource("1_n3uvn")]([])

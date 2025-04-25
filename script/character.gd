@@ -1,5 +1,7 @@
 class_name Character extends CharacterBody2D
 
+signal moved_tiles(previous_position: Vector2i, new_position: Vector2i, player_instance: Character)#
+
 # Action Management
 enum ActionState {
 	IDLE,
@@ -21,11 +23,14 @@ enum Direction {
 @export var speed: float = 100.0
 @export var acceleration: float = 800.0
 @export var friction: float = 1000.0
+@export var base_luminosity: int = 2#
+@export var map: TileMap#
 
 # Current state tracking
 var current_direction: Direction = Direction.DOWN
 var current_action_state: ActionState = ActionState.IDLE
 var last_action_direction: Direction = Direction.DOWN
+var current_tile_position: Vector2i#
 
 # Generic Action Class
 class CharacterAction:
@@ -124,6 +129,11 @@ func _physics_process(delta: float) -> void:
 	
 	handle_animations()
 	move_and_slide()
+	if map:#
+		var new_tile_position = map.local_to_map(global_position)
+		if new_tile_position != current_tile_position:
+			moved_tiles.emit(current_tile_position, new_tile_position, self)
+			current_tile_position = new_tile_position
 
 func handle_movement() -> void:
 	var direction: Vector2 = Input.get_vector("run_left", "run_right", "run_up", "run_down")
@@ -257,3 +267,6 @@ func get_interaction_direction(object_position: Vector2) -> String:
 	
 	# Only return left or right based on horizontal position
 	return "left" if relative_pos.x < 0 else "right"
+
+func get_luminosity():#
+	return base_luminosity#
