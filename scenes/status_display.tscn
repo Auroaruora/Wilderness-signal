@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv85um35dllay"]
 
-[ext_resource type="Script" path="res://hunger_display.gd" id="1_j4on0"]
+[ext_resource type="Script" path="res://script/StatusDisplay.gd" id="1_j4on0"]
 
 [node name="StatusDisplay" type="Control"]
 custom_minimum_size = Vector2(200, 100)

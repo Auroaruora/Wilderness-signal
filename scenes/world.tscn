@@ -18,7 +18,7 @@ item_resource = ExtResource("4_ygk6o")
 
 [node name="Character" parent="." instance=ExtResource("2_0lmgk")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
 script = ExtResource("4_y1vtl")
 camera_target_path = NodePath("../Character")

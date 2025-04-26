@@ -1,7 +1,7 @@
 extends Node2D
 @onready var map = $Map
 @onready var player = $Character
-@onready var player_camera: Camera2D = $Camera2D
+@onready var player_camera: Camera2D = $PlayerCamera
 
 @export var seed: int = 0
 @export var map_width: int = 100
