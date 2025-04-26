@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Biome" load_steps=2 format=3 uid="uid://cufqkdo86in1q"]
+[gd_resource type="Resource" script_class="Biome" load_steps=3 format=3 uid="uid://cufqkdo86in1q"]
 
 [ext_resource type="Script" path="res://map/biome.gd" id="1_3up3r"]
+[ext_resource type="Script" path="res://map/map_scene.gd" id="1_vfu55"]
 
 [resource]
 script = ExtResource("1_3up3r")
 terrain_id = 3
-map_scenes = Array[Resource("res://map/map_scene.gd")]([])
+map_scenes = Array[ExtResource("1_vfu55")]([])
+indoors = false
 is_cave = false
-cave_wall_scenes = Array[Resource("res://map/map_scene.gd")]([])
+cave_wall_scenes = Array[ExtResource("1_vfu55")]([])

@@ -6,6 +6,11 @@
 [resource]
 script = ExtResource("1_3bg47")
 id = "axe"
+name = ""
 texture = ExtResource("2_mmdmy")
+item_type = 0
 stackable = false
+stack_count = 1
 max_stack = 1
+description = ""
+value = 0

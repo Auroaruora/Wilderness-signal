@@ -1,4 +1,5 @@
-extends Node2D
+extends Entity
+class_name TreeNode
 
 @onready var tree_sprite = $TreeSprite
 @onready var cut_tree_sprite = $TreePivot/CutTreeSprite
@@ -139,6 +140,7 @@ func explode_tree():
 	
 	# Clean up after particles finish
 	await get_tree().create_timer(explosion_particles.lifetime + 0.5).timeout
+	remove()
 	explosion_particles.queue_free()
 
 func create_square_texture():
