@@ -6,6 +6,17 @@ signal hunger_changed(value)
 @export var current_hunger: float = 100.0
 @export var hunger_depletion_rate: float = 0.5  # How much hunger depletes per second
 @export var health_damage_when_starving: float = 0.2  # Damage per second when starving
+#@export_group("Hunger Settings")
+#@export var max_hunger: float = 100.0:
+	#set(val):
+		#max_hunger = val
+		#emit_signal("hunger_changed", current_hunger)
+#@export var current_hunger: float = 100.0:
+	#set(val):
+		#current_hunger = min(max_hunger, val)
+		#emit_signal("hunger_changed", current_hunger)
+#@export var hunger_depletion_rate: float = 0.5  # How much hunger depletes per second
+#@export var health_damage_when_starving: float = 0.2  # Damage per second when starving
 
 func _ready():
 	call_deferred("emit_signal", "hunger_changed", current_hunger)

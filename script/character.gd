@@ -7,6 +7,7 @@ enum ActionState {
 	IDLE,
 	MOVING,
 	ACTING,  # Generic acting state to replace multiple specific states
+	DEAD
 }
 
 # Direction Management
@@ -57,16 +58,18 @@ func _ready() -> void:
 		$InventoryUI/InventoryDisplay.inventory = $Inventory
 		print("Connected inventory to display")
 
+		
+
 func setup_action_handlers() -> void:
 	# Generic method to add actions more easily
 	add_action(
-		"axe", 
+		"axe",
 		func(): return inventory.has_item("axe"),  # Condition
 		func(): attempt_tree_cut(),  # Action
 		"axe_"  # Animation prefix
 	)
 	add_action(
-		"hammer", 
+		"hammer",
 		func(): return true,  # Always available since we check elsewhere
 		func(): print("Hammering action"),  # This will be overridden by the tower
 		"hammer_"  # Animation prefix
@@ -81,9 +84,9 @@ func setup_action_handlers() -> void:
 
 func add_action(action_name: String, condition: Callable, action: Callable, animation_prefix: String) -> void:
 	action_handlers[action_name] = CharacterAction.new(
-		action_name, 
-		condition, 
-		action, 
+		action_name,
+		condition,
+		action,
 		animation_prefix
 	)
 
@@ -123,8 +126,14 @@ func attempt_tree_cut() -> void:
 		closest_tree.cut_tree(cut_direction)
 
 func _physics_process(delta: float) -> void:
-	# Only allow movement when not in a blocking action state
-	if current_action_state == ActionState.IDLE or current_action_state == ActionState.MOVING:
+	# Check health status first - only process movement if alive
+	var health_system = get_node_or_null("HealthSystem")
+	if health_system and health_system.current_health <= 0:
+		die()
+		return
+	
+	# Only allow movement when not in a blocking action state and alive
+	if (current_action_state == ActionState.IDLE or current_action_state == ActionState.MOVING):
 		handle_movement()
 	
 	handle_animations()
@@ -159,6 +168,13 @@ func handle_animations() -> void:
 		ActionState.IDLE:
 			play_idle_animation()
 		# Removed specific action state handling
+		ActionState.ACTING:
+			# Acting animations handled separately
+			pass
+		ActionState.DEAD:
+			# Death animation is handled in the die() function
+			# Just make sure we don't override it with other animations
+			pass
 
 func play_movement_animation() -> void:
 	var animation_name: String
@@ -270,3 +286,120 @@ func get_interaction_direction(object_position: Vector2) -> String:
 
 func get_luminosity():#
 	return base_luminosity#
+# Add this function to your Character class
+
+func die() -> void:
+	# Only die if not already dead
+	if current_action_state == ActionState.DEAD:
+		return
+		
+	# Set to dead state
+	current_action_state = ActionState.DEAD
+	
+	# Log the death cause
+	var health_system = get_node_or_null("HealthSystem")
+	if health_system:
+		print("Character died - Health: ", health_system.current_health)
+	
+	# Stop all movement
+	velocity = Vector2.ZERO
+	
+	# Play death animation
+	var animation_name = "death_" + get_direction_name()
+	animated_sprite.play(animation_name)
+	
+	# Connect to the animation finished signal
+	if not animated_sprite.animation_finished.is_connected(_on_death_animation_finished):
+		animated_sprite.animation_finished.connect(_on_death_animation_finished)
+	
+	# Disable input processing
+	set_process_unhandled_input(false)
+	
+	print("Character died")
+	
+	# Remove the timer-based resurrection - we'll use animation completion instead
+	# Let the animation finish naturally before resurrecting
+	
+func _on_death_animation_finished() -> void:
+	# Check if it was a death animation
+	if animated_sprite.animation.begins_with("death_"):
+		# Disconnect the signal to avoid repeated calls
+		if animated_sprite.animation_finished.is_connected(_on_death_animation_finished):
+			animated_sprite.animation_finished.disconnect(_on_death_animation_finished)
+		
+		print("Death animation completed, starting resurrection process")
+		# Start resurrection after death animation finishes
+		resurrect()
+
+
+func resurrect() -> void:
+	print("Character resurrected")
+	
+	# Reset health system first
+	var health_system = get_node_or_null("HealthSystem")
+	if health_system:
+		health_system.current_health = health_system.max_health
+		health_system.emit_signal("health_changed", health_system.current_health)
+
+	# Reset hunger system
+	var hunger_system = get_node_or_null("HungerSystem")
+	if hunger_system:
+		hunger_system.current_hunger = hunger_system.max_hunger
+		hunger_system.emit_signal("hunger_changed", hunger_system.current_hunger)
+	
+	# Start blinking animation
+	start_blinking_sequence()
+	
+# Keep these variables
+var is_blinking: bool = false
+var blink_timer: Timer
+var blink_count: int = 0
+var blink_max: int = 6  # Total number of blink cycles
+var blink_duration: float = 0.2  # Duration of each blink state
+
+func start_blinking_sequence() -> void:
+	# Create the blink timer only when needed
+	if not blink_timer:
+		blink_timer = Timer.new()
+		blink_timer.timeout.connect(_on_blink_timer_timeout)
+		add_child(blink_timer)
+	
+	is_blinking = true
+	blink_count = 0
+	
+	# Set the idle animation first before starting to blink
+	current_action_state = ActionState.IDLE
+	play_idle_animation()
+	
+	animated_sprite.visible = false  # Start invisible
+	blink_timer.wait_time = blink_duration
+	blink_timer.start()
+	print("Blinking sequence started after resurrection")
+	
+func _on_blink_timer_timeout() -> void:
+	if is_blinking:
+		# Toggle visibility
+		animated_sprite.visible = !animated_sprite.visible
+		blink_count += 1
+		
+		# Check if blinking sequence is complete
+		if blink_count >= blink_max * 2:  # Each cycle has 2 states (visible/invisible)
+			print("Blinking sequence complete")
+			is_blinking = false
+			animated_sprite.visible = true
+			blink_timer.stop()
+			
+			# Now that blinking is complete, finish the resurrection process
+			finish_resurrection()
+func finish_resurrection() -> void:
+	# Reset state
+	current_action_state = ActionState.IDLE
+	
+	# Enable input processing again
+	set_process_unhandled_input(true)
+	set_physics_process(true)
+	
+	# Play idle animation
+	play_idle_animation()
+	
+	print("Character resurrection complete with blinking effect")
