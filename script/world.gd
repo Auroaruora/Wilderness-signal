@@ -1,7 +1,7 @@
 extends Node2D
 @onready var map = $Map
 @onready var player = $Character
-@onready var player_camera: Camera2D = $PlayerCamera
+@onready var player_camera: Camera2D = $Character/PlayerCamera
 
 @export var seed: int = 0
 @export var map_width: int = 100
@@ -46,3 +46,13 @@ func _on_map_generated() -> void:
 	player.global_position = world_pos
 	player.map = map
 	player.moved_tiles.connect(map._on_player_moved_tiles)
+	# NEW CODE: Set position of existing Tower and Pickable Item
+	if has_node("Tower"):
+		$Tower.global_position = world_pos
+		# Optional: Add a small offset to prevent overlap
+		$Tower.global_position += Vector2(-30, -30)
+	
+	if has_node("PickableItem"):
+		$PickableItem.global_position = world_pos
+		# Optional: Add a small offset to prevent overlap
+		$PickableItem.global_position += Vector2(30, 30)

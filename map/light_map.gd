@@ -1,7 +1,7 @@
 class_name LightMap extends TileMap
 
 
-const MAX_LIGHT = 7
+const MAX_LIGHT = 20
 
 var calculated_lightmap = {}
 

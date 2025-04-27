@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cum00f74tou7i"]
+[gd_scene load_steps=8 format=3 uid="uid://cum00f74tou7i"]
 
 [ext_resource type="PackedScene" uid="uid://ddnutwjei4ae8" path="res://map/map.tscn" id="1_ddrwe"]
 [ext_resource type="Script" path="res://script/world.gd" id="1_svqlj"]
@@ -6,19 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="3_o8cbl"]
 [ext_resource type="Script" path="res://script/player_camera.gd" id="4_y1vtl"]
 [ext_resource type="Resource" uid="uid://doldniv3colwn" path="res://resources/axe.tres" id="4_ygk6o"]
+[ext_resource type="PackedScene" uid="uid://c7tiv4lsxvwjn" path="res://scenes/tower.tscn" id="6_mmfq1"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_svqlj")
 
 [node name="Map" parent="." instance=ExtResource("1_ddrwe")]
 
+[node name="Tower" parent="." instance=ExtResource("6_mmfq1")]
+position = Vector2(-63, -22)
+
 [node name="PickableItem" parent="." instance=ExtResource("3_o8cbl")]
-position = Vector2(477, 354)
+position = Vector2(63, 1)
 item_resource = ExtResource("4_ygk6o")
 
 [node name="Character" parent="." instance=ExtResource("2_0lmgk")]
 
-[node name="PlayerCamera" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="Character"]
 zoom = Vector2(5, 5)
 script = ExtResource("4_y1vtl")
-camera_target_path = NodePath("../Character")
