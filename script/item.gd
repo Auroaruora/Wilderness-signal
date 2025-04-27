@@ -7,7 +7,7 @@ enum ItemType {
 	FOOD,
 	TOOL,
 	WEAPON,
-	CONSUMABLE,
+	MATERIAL,
 	#QUEST,
 	#EQUIPMENT,
 	#CONSUMABLE
@@ -25,7 +25,7 @@ enum ItemType {
 
 func use(character) -> bool:
 	# Base implementation does nothing
-	# Override in child classes
+	# Override in child classes"res://resources/assets/consumable/wood.png"
 	return false
 	
 func can_use() -> bool:
@@ -46,8 +46,8 @@ func is_tool() -> bool:
 func is_weapon() -> bool:
 	return item_type == ItemType.WEAPON
 	
-func is_consumable() -> bool:
-	return item_type == ItemType.CONSUMABLE
+func is_material() -> bool:
+	return item_type == ItemType.MATERIAL
 	
 func is_stackable() -> bool:
 	return stackable

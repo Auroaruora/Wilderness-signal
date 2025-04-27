@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://de2c4d7ehlj68"]
+[gd_scene load_steps=8 format=3 uid="uid://de2c4d7ehlj68"]
 
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="1_87eck"]
+[ext_resource type="Resource" uid="uid://c32xg3benxfwh" path="res://resources/material/wood.tres" id="2_edi7r"]
 [ext_resource type="PackedScene" uid="uid://ggaxlea8gisp" path="res://entity/forest/choppable_tree.tscn" id="2_kbfqp"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="3_t5gbh"]
-[ext_resource type="Resource" uid="uid://doldniv3colwn" path="res://resources/axe.tres" id="4_70bqs"]
+[ext_resource type="Resource" uid="uid://qii2vnvxauw8" path="res://resources/tools/axe.tres" id="4_70bqs"]
 [ext_resource type="PackedScene" uid="uid://c7tiv4lsxvwjn" path="res://scenes/tower.tscn" id="5_87ywx"]
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="6_w52ky"]
 
@@ -11,8 +12,9 @@
 
 [node name="ChoppableTree" parent="." instance=ExtResource("2_kbfqp")]
 position = Vector2(313, 367)
+wood_resource = ExtResource("2_edi7r")
 
-[node name="PickableItem" parent="." instance=ExtResource("3_t5gbh")]
+[node name="axe" parent="." instance=ExtResource("3_t5gbh")]
 position = Vector2(265, 411)
 item_resource = ExtResource("4_70bqs")
 
@@ -23,3 +25,7 @@ position = Vector2(360, 354)
 position = Vector2(277, 370)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("6_w52ky")]
+
+[node name="axe2" parent="." instance=ExtResource("3_t5gbh")]
+position = Vector2(175, 348)
+item_resource = ExtResource("4_70bqs")

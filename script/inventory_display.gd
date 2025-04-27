@@ -20,9 +20,9 @@ func _ready():
 	var character = get_parent().get_parent()
 	print("InventoryDisplay: Parent of parent is: " + character.name)
 	
-	if character and character.has_node("Inventory"):
-		inventory = character.get_node("Inventory")
-		print("InventoryDisplay: Found Inventory node")
+	if has_node("Inventory"):
+		inventory = get_node("Inventory")
+		print("InventoryDisplay: Found Inventory node as direct child")
 		
 		# Connect signals from the inventory
 		inventory.item_added.connect(_on_item_added)

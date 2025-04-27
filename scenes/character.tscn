@@ -1101,13 +1101,14 @@ animation = &"axe_down"
 position = Vector2(-2, -4)
 shape = SubResource("RectangleShape2D_wrj47")
 
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("5_kiqmf")
-
 [node name="InventoryUI" type="CanvasLayer" parent="."]
 layer = 10
 
 [node name="StatusDisplay" parent="InventoryUI" instance=ExtResource("8_vpj0g")]
-current_hunger = 0.0
+max_health = 1.0
+max_hunger = 0.0
 
 [node name="InventoryDisplay" parent="InventoryUI" instance=ExtResource("8_tlohn")]
+
+[node name="Inventory" type="Node" parent="InventoryUI/InventoryDisplay"]
+script = ExtResource("5_kiqmf")
