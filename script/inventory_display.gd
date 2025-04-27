@@ -3,9 +3,12 @@ extends Control
 
 # Reference to the inventory - will be set in _ready() or by the parent
 var inventory: Inventory
-@export var slot_color: Color = Color(0.3, 0.3, 0.3, 1.0)
-@export var selected_slot_color: Color = Color(0.5, 0.5, 0.5, 1.0)
+@export var normal_slot_sprite: Texture2D  # Sprite for normal unselected slot
+@export var selected_slot_sprite: Texture2D  # Sprite for selected slot
+@export var slot_color: Color = Color(0.3, 0.3, 0.3, 1.0)  # Keep for fallback
+@export var selected_slot_color: Color = Color(0.5, 0.5, 0.5, 1.0)  # Keep for fallback
 @export var font_color: Color = Color(1, 1, 1, 1)
+
 
 @onready var slot_container = $BackgroundPanel/SlotContainer
 @onready var tooltip = $TooltipLabel
@@ -44,6 +47,27 @@ func _ready():
 	
 	# Initial display update
 	update_inventory_display()
+	
+	# Select the first slot by default
+	if slots.size() > 0:
+		select_slot(0)
+
+# Helper function to get or create the background sprite node
+func ensure_background_sprite(slot):
+	if slot.has_node("BackgroundSprite"):
+		return slot.get_node("BackgroundSprite")
+	else:
+		# Create a new sprite node for the background
+		var sprite = Sprite2D.new()
+		sprite.name = "BackgroundSprite"
+		sprite.centered = false  # Position at top-left
+		sprite.position = Vector2.ZERO
+		
+		# Add it as the first child so it's behind everything else
+		slot.add_child(sprite)
+		slot.move_child(sprite, 0)
+		
+		return sprite
 
 # Add this handler
 func _on_item_modified(item):
@@ -106,25 +130,43 @@ func update_inventory_display():
 			print("Setting stack label for ", item.id, " to: ", stack_label.text, " visible: ", stack_label.visible)
 		else:
 			stack_label.visible = false
+
 func select_slot(index: int):
 	# Deselect previous slot
 	if selected_slot != -1 and selected_slot < slots.size():
 		var prev_slot = slots[selected_slot]
-		var normal_style = StyleBoxFlat.new()
-		normal_style.bg_color = slot_color
-		normal_style.set_corner_radius_all(4)
-		prev_slot.add_theme_stylebox_override("panel", normal_style)
+		# Reset background sprite
+		var prev_bg_sprite = prev_slot.get_node("SlotBackground")
+		prev_bg_sprite.modulate = Color(1, 1, 1, 1)
+		
+		# Reset item sprite if it exists
+		var prev_item_sprite = prev_slot.get_node("ItemTexture")
+		if prev_item_sprite:
+			prev_item_sprite.modulate = Color(1, 1, 1, 1)
+			
+		print("Deselected slot " + str(selected_slot) + ", returning to normal appearance")
 	
 	# Select new slot
 	selected_slot = index
 	
 	if index != -1 and index < slots.size():
 		var slot = slots[index]
-		var selected_style = StyleBoxFlat.new()
-		selected_style.bg_color = selected_slot_color
-		selected_style.set_corner_radius_all(4)
-		slot.add_theme_stylebox_override("panel", selected_style)
 		
+		# Light up background sprite
+		var bg_sprite = slot.get_node("SlotBackground")
+		bg_sprite.modulate = Color(1.3, 1.3, 1.3, 1)  # Brighter tint
+		
+		# Light up item sprite if it exists and has a texture
+		var item_sprite = slot.get_node("ItemTexture")
+		if item_sprite and item_sprite.texture:
+			item_sprite.modulate = Color(1.3, 1.3, 1.3, 1)  # Match brightness with background
+			
+		print("Selected slot " + str(index) + ", applying brighter appearance")
+		
+		# Update the inventory's selected item (whether the slot has an item or not)
+		if inventory:
+			inventory.select_item(index)
+			
 		# Show tooltip if item exists in inventory
 		if inventory and index < inventory.items.size():
 			show_tooltip(inventory.items[index])

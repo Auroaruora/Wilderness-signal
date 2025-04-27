@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bib063ijjum55"]
+[gd_scene load_steps=6 format=3 uid="uid://bib063ijjum55"]
 
 [ext_resource type="Script" path="res://script/inventory_display.gd" id="1_ucp2m"]
+[ext_resource type="Texture2D" uid="uid://du7r0sqrqpjg7" path="res://assets/ui/tinyRPG_manaSoulGUI_v_1_0/20250420manaSoul9SlicesC-Sheet.png" id="2_jboqh"]
+[ext_resource type="Texture2D" uid="uid://bgug6sycfwk4g" path="res://assets/ui/tinyRPG_manaSoulGUI_v_1_0/20250420manaSoul9SlicesB-Sheet.png" id="3_f8nq7"]
+[ext_resource type="PackedScene" uid="uid://cdju363jtkpap" path="res://scenes/slot.tscn" id="4_ecjys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8pgn"]
 bg_color = Color(0.803922, 0.52549, 0.321569, 0.803922)
@@ -15,6 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_ucp2m")
+normal_slot_sprite = ExtResource("2_jboqh")
+selected_slot_sprite = ExtResource("3_f8nq7")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -43,214 +48,29 @@ grow_vertical = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Slot1" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot1" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot1"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot1"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot2" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot2" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot2"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot2"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot3" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot3" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot3"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot3"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot4" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot4" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot4"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot4"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot5" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot5" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot5"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot5"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 1.0
-offset_right = 80.0
-offset_bottom = 24.0
-horizontal_alignment = 2
-
-[node name="Slot6" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot6" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot6"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot6"]
-layout_mode = 0
-offset_left = 39.0
-offset_right = 79.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot7" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot7" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot7"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot7"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
-
-[node name="Slot8" type="Panel" parent="BackgroundPanel/SlotContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Slot8" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
-
-[node name="ItemTexture" type="TextureRect" parent="BackgroundPanel/SlotContainer/Slot8"]
-custom_minimum_size = Vector2(55, 55)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StackLabel" type="Label" parent="BackgroundPanel/SlotContainer/Slot8"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
-offset_bottom = 23.0
-horizontal_alignment = 2
 
 [node name="TooltipLabel" type="Label" parent="."]
 layout_mode = 0

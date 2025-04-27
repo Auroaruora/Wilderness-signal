@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdju363jtkpap"]
+
+[ext_resource type="Texture2D" uid="uid://bty4jtflvjagt" path="res://assets/ui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HotkeyBox_34x34.png" id="1_udd8u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yi6ci"]
+
+[node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(80, 80)
+theme_override_styles/panel = SubResource("StyleBoxTexture_yi6ci")
+
+[node name="SlotBackground" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+scale = Vector2(2.35294, 2.35294)
+texture = ExtResource("1_udd8u")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StackLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 23.0
+horizontal_alignment = 2
