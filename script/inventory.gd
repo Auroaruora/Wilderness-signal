@@ -6,7 +6,7 @@ signal item_added(item)
 signal item_removed(item)
 signal item_modified(item)
 var items = []
-var max_items = 10
+@export var max_items = 10
 
 func add_item(item):
 	# First check if we can stack this item

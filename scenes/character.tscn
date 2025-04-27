@@ -1112,3 +1112,4 @@ max_hunger = 0.0
 
 [node name="Inventory" type="Node" parent="InventoryUI/InventoryDisplay"]
 script = ExtResource("5_kiqmf")
+max_items = 8
