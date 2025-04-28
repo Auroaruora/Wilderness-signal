@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://cc08vlfq2vpi2"]
+
+[ext_resource type="Script" path="res://script/item_tool.gd" id="1_sfp0t"]
+[ext_resource type="Texture2D" uid="uid://5gn44t6vo3br" path="res://resources/assets/tools/05.png" id="2_xk74i"]
+
+[resource]
+script = ExtResource("1_sfp0t")
+tool_strength = 1
+durability = 100
+max_durability = 100
+tool_type = "Pickaxe"
+efficiency = 1.0
+id = "pickaxe"
+name = "pickaxe"
+texture = ExtResource("2_xk74i")
+item_type = 1
+stackable = false
+stack_count = 1
+max_stack = 1
+description = ""
+value = 0
