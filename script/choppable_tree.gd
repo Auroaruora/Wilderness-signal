@@ -99,8 +99,8 @@ func drop_wood_items(offset: Vector2 = Vector2.ZERO):
 		wood_item.item_resource = wood_resource
 		
 		# Set the wood item's position with slight randomization
-		var offset_x = offset.x + randf_range(-5, 5)  # Add some randomness to the offset
-		var offset_y = offset.y + randf_range(-5, 5)
+		var offset_x = offset.x + randf_range(-10, 10)  # Add some randomness to the offset
+		var offset_y = offset.y + randf_range(-10, 10)
 		wood_item.global_position = global_position + Vector2(offset_x, offset_y)
 		
 		# Add the wood item to the scene
