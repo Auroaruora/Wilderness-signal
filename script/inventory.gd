@@ -23,12 +23,20 @@ func select_item(index):
 		emit_signal("item_modified", selected_item)
 		return true
 	return false
-
 # Function to return the currently selected item or null if selected slot is empty
 func get_selected_item():
 	# Check if the selected index is valid and has an item
 	if current_selected_item >= 0 and current_selected_item < items.size():
 		return items[current_selected_item]
+	
+	# Return null if the selected slot is empty or invalid
+	return null
+	
+# Function to return the currently selected item or null if selected slot is empty
+func get_selected_item_name():
+	# Check if the selected index is valid and has an item
+	if current_selected_item >= 0 and current_selected_item < items.size():
+		return items[current_selected_item].name
 	
 	# Return null if the selected slot is empty or invalid
 	return null

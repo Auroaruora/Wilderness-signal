@@ -59,7 +59,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle action inputs
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event.is_action_pressed("interact") and inventory.get_selected_item_name()=="axe":
+		#and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
 		attempt_action("axe")  # You can extend this to multiple actions easily
 		
 func _physics_process(delta: float) -> void:
@@ -72,7 +73,6 @@ func _physics_process(delta: float) -> void:
 	# Only allow movement when not in a blocking action state and alive
 	if (current_action_state == ActionState.IDLE or current_action_state == ActionState.MOVING):
 		handle_movement()
-	
 	handle_animations()
 	move_and_slide()
 	if map:#
@@ -89,9 +89,8 @@ class CharacterAction:
 	var action: Callable
 	var animation_prefix: String
 	
-	func _init(p_name: String, p_condition: Callable, p_action: Callable, p_animation_prefix: String):
+	func _init(p_name: String,p_action: Callable, p_animation_prefix: String):
 		name = p_name
-		condition = p_condition
 		action = p_action
 		animation_prefix = p_animation_prefix
 
@@ -101,21 +100,18 @@ func setup_action_handlers() -> void:
 	# Generic method to add actions more easily
 	add_action(
 		"axe",
-		func(): return inventory.has_item("axe"),  # Condition
-		func(): attempt_tree_cut(),  # Action
+		func(): print("axing action"),#attempt_tree_cut(),  # Action
 		"axe_"  # Animation prefix
 	)
 	add_action(
 		"hammer",
-		func(): return true,  # Always available since we check elsewhere
 		func(): print("Hammering action"),  # This will be overridden by the tower
 		"hammer_"  # Animation prefix
 	)
 
-func add_action(action_name: String, condition: Callable, action: Callable, animation_prefix: String) -> void:
+func add_action(action_name: String, action: Callable, animation_prefix: String) -> void:
 	action_handlers[action_name] = CharacterAction.new(
 		action_name,
-		condition,
 		action,
 		animation_prefix
 	)
@@ -124,11 +120,7 @@ func attempt_action(action_name: String) -> void:
 	# Check if action exists and can be performed
 	if action_name in action_handlers:
 		var action_data = action_handlers[action_name]
-		
-		# Check if action can be performed
-		if action_data.condition.call():
-			# Perform the generic action
-			perform_generic_action(action_data)
+		perform_generic_action(action_data)
 
 func perform_generic_action(action_data) -> void:
 	# Set to a generic acting state
@@ -152,26 +144,7 @@ func perform_generic_action(action_data) -> void:
 	# Optional: Add logging
 	print(action_data.name + " used in " + get_direction_name())
 
-func attempt_tree_cut() -> void:
-	print("cutting tree")
-	# Find the closest tree
-	var nearby_trees = get_tree().get_nodes_in_group("trees")
-	var closest_tree = null
-	var min_distance = INF
-	
-	# Find the closest tree
-	for tree in nearby_trees:
-		var distance = global_position.distance_to(tree.global_position)
-		if distance < min_distance:
-			min_distance = distance
-			closest_tree = tree
-	
-	# If a tree is found and is close enough
-	if closest_tree and is_close_to_object(closest_tree.global_position):
-		# Determine the cutting direction and character facing
-		var relative_pos = closest_tree.global_position - global_position
-		var cut_direction = "left" if relative_pos.x < 0 else "right"
-		closest_tree.cut_tree(cut_direction)
+#d
 #endregion
 
 #region Movement System

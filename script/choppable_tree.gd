@@ -8,9 +8,10 @@ class_name TreeNode
 @onready var explosion_particles = null
 @export var pickable_wood_scene: PackedScene
 @export var wood_resource: Resource
-
+@export var interaction_distance = 40.0
 # Add a state variable to track if the tree has been cut
 var is_tree_cut = false
+var player_ref = null
 
 func _ready():
 	add_to_group("trees")
@@ -18,16 +19,37 @@ func _ready():
 	tree_sprite.visible = true
 	cut_tree_sprite.visible = false
 	stump_sprite.visible = false
+	
+			
+func _on_interaction_area_body_entered(body):
+	if body is Character:  # Using the class_name from your Character script
+		player_ref = body
 
-func _input(event):
-	# Check for directional tree cutting
-	if event is InputEventKey and event.pressed:
-		match event.keycode:
-			KEY_L:
-				cut_tree("left")
-			KEY_R:
-				cut_tree("right")
 
+func _on_interaction_area_body_exited(body):
+	if body is Character and player_ref == body:
+		player_ref = null	
+		
+func _unhandled_input(event):
+	# Only process if player is in range and tree isn't cut
+	if player_ref and not is_tree_cut and is_player_close():
+		# Check specifically for the interact action
+		if event.is_action_pressed("interact"):
+			# This will only run ONCE when the interact button is pressed
+			# Check if axe is selected at the EXACT moment of interaction
+			if player_ref.inventory.get_selected_item_name() == "axe":
+				print("trying to cut tree")
+				var relative_pos = global_position - player_ref.global_position
+				var cut_direction = "left" if relative_pos.x < 0 else "right"
+				cut_tree(cut_direction)
+				# Accept the input so it doesn't propagate
+				get_viewport().set_input_as_handled()		
+
+					
+func is_player_close() -> bool:
+	return player_ref.is_close_to_object(global_position, interaction_distance)	
+			
+		
 func cut_tree(direction: String):
 	# Check if the tree has already been cut
 	if is_tree_cut:
@@ -140,7 +162,7 @@ func explode_tree():
 	
 	# Clean up after particles finish
 	await get_tree().create_timer(explosion_particles.lifetime + 0.5).timeout
-	remove()
+	#remove()
 	explosion_particles.queue_free()
 
 func create_square_texture():

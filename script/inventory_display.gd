@@ -17,37 +17,28 @@ var slots = []
 var selected_slot = -1
 
 func _ready():
-	print("InventoryDisplay: _ready called")
 	
 	# Try to automatically get reference to the inventory
 	var character = get_parent().get_parent()
-	print("InventoryDisplay: Parent of parent is: " + character.name)
 	
 	if has_node("Inventory"):
 		inventory = get_node("Inventory")
-		print("InventoryDisplay: Found Inventory node as direct child")
 		
 		# Connect signals from the inventory
 		inventory.item_added.connect(_on_item_added)
 		inventory.item_removed.connect(_on_item_removed)
 		inventory.item_modified.connect(_on_item_modified)
 		
-		print("InventoryDisplay: Connected signals")
 	else:
-		print("InventoryDisplay: No Inventory node found!")
 		if character:
 			print("Available nodes under character: " + str(character.get_children()))
 	
 	# Get all slot nodes
 	collect_slots()
-	print("InventoryDisplay: Collected " + str(slots.size()) + " slots")
-	
 	# Initialize the tooltip
 	tooltip.visible = false
-	
 	# Initial display update
 	update_inventory_display()
-	
 	# Select the first slot by default
 	if slots.size() > 0:
 		select_slot(0)
@@ -143,9 +134,6 @@ func select_slot(index: int):
 		var prev_item_sprite = prev_slot.get_node("ItemTexture")
 		if prev_item_sprite:
 			prev_item_sprite.modulate = Color(1, 1, 1, 1)
-			
-		print("Deselected slot " + str(selected_slot) + ", returning to normal appearance")
-	
 	# Select new slot
 	selected_slot = index
 	
@@ -160,9 +148,7 @@ func select_slot(index: int):
 		var item_sprite = slot.get_node("ItemTexture")
 		if item_sprite and item_sprite.texture:
 			item_sprite.modulate = Color(1.3, 1.3, 1.3, 1)  # Match brightness with background
-			
-		print("Selected slot " + str(index) + ", applying brighter appearance")
-		
+	
 		# Update the inventory's selected item (whether the slot has an item or not)
 		if inventory:
 			inventory.select_item(index)
