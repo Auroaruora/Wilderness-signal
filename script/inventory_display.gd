@@ -193,6 +193,17 @@ func _on_slot_gui_input(event, index):
 				# Handle item use here if needed
 				if index < inventory.items.size():
 					print("Using item: ", inventory.items[index].id)
+	# Check for right mouse button press
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		# Get the currently selected item from the inventory
+		var selected_item = inventory.get_selected_item()
+		
+		# Check if an item is selected and if it's a food item
+		if selected_item and selected_item.is_food():
+			# Use the food item
+			print("Using food item: ", selected_item.id)
+			## Remove the item from inventory
+			inventory.remove_item(selected_item)
 
 func _on_slot_mouse_entered(index):
 	if inventory and index < inventory.items.size():
