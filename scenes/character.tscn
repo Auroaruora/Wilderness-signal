@@ -1107,8 +1107,8 @@ shape = SubResource("RectangleShape2D_wrj47")
 layer = 10
 
 [node name="StatusDisplay" parent="InventoryUI" instance=ExtResource("8_vpj0g")]
-max_health = 1.0
-max_hunger = 0.0
+current_health = 100.0
+current_hunger = 100.0
 
 [node name="InventoryDisplay" parent="InventoryUI" instance=ExtResource("8_tlohn")]
 

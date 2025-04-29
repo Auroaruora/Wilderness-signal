@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqi730nrl5x2p"]
+
+[ext_resource type="Script" path="res://entity/forest/barries_bush.gd" id="1_fj2wk"]
+[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="2_o3qgg"]
+[ext_resource type="Resource" uid="uid://bxlqskj47yyol" path="res://resources/food/barries.tres" id="3_x8ptn"]
+[ext_resource type="Texture2D" uid="uid://s46h55mykmeb" path="res://entity/assets/barries_bush.png" id="4_ile3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nnj4q"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qd8pg"]
+radius = 38.4708
+
+[node name="BarriesBush" type="StaticBody2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_fj2wk")
+pickable_berry_scene = ExtResource("2_o3qgg")
+berry_resource = ExtResource("3_x8ptn")
+
+[node name="RegularBarriesBush" type="Sprite2D" parent="."]
+texture = ExtResource("4_ile3c")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="HarvestedBarriesBush" type="Sprite2D" parent="."]
+texture = ExtResource("4_ile3c")
+region_enabled = true
+region_rect = Rect2(48, 0, 48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_nnj4q")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(-2, 5)
+shape = SubResource("CircleShape2D_qd8pg")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interaction_area_body_exited"]

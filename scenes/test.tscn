@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://de2c4d7ehlj68"]
+[gd_scene load_steps=10 format=3 uid="uid://de2c4d7ehlj68"]
 
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="1_87eck"]
 [ext_resource type="PackedScene" uid="uid://ggaxlea8gisp" path="res://entity/forest/choppable_tree.tscn" id="2_kbfqp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="6_w52ky"]
 [ext_resource type="Resource" uid="uid://cc08vlfq2vpi2" path="res://resources/tools/pickaxe.tres" id="7_igowu"]
 [ext_resource type="PackedScene" uid="uid://wqiu74qgtg3y" path="res://entity/cave/iron_node.tscn" id="8_qax3h"]
+[ext_resource type="PackedScene" uid="uid://cqi730nrl5x2p" path="res://entity/forest/barries_bush.tscn" id="9_sas67"]
 
 [node name="test" type="Node2D"]
 
@@ -15,7 +16,7 @@
 position = Vector2(313, 367)
 
 [node name="axe" parent="." instance=ExtResource("3_t5gbh")]
-position = Vector2(265, 411)
+position = Vector2(107, 423)
 item_resource = ExtResource("4_70bqs")
 
 [node name="Tower" parent="." instance=ExtResource("5_87ywx")]
@@ -32,3 +33,6 @@ item_resource = ExtResource("7_igowu")
 
 [node name="iron_node" parent="." instance=ExtResource("8_qax3h")]
 position = Vector2(247, 307)
+
+[node name="BarriesBush" parent="." instance=ExtResource("9_sas67")]
+position = Vector2(235, 380)

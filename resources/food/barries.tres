@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FoodItem" load_steps=3 format=3 uid="uid://bxlqskj47yyol"]
+
+[ext_resource type="Script" path="res://script/item_food.gd" id="1_7mbrk"]
+[ext_resource type="Texture2D" uid="uid://dry0r81cmoq1" path="res://resources/assets/food/barries.png" id="2_0uys6"]
+
+[resource]
+script = ExtResource("1_7mbrk")
+health_restore = 1
+stamina_restore = 0
+hunger_restore = 20
+thirst_restore = 0
+buff_duration = 0.0
+buffs = Array[String]([])
+id = "raspberry"
+name = "raspberry"
+texture = ExtResource("2_0uys6")
+item_type = 0
+stackable = true
+stack_count = 1
+max_stack = 20
+description = ""
+value = 0

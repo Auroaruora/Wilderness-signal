@@ -7,8 +7,6 @@ extends Node2D
 @export var map_width: int = 100
 @export var map_height: int = 100
 @export var player_spawn_cell: Vector2i = Vector2i(0, 0)
-@export var player_scene: PackedScene
-
 
 func _ready():
 	if map.noise == null:
@@ -52,7 +50,12 @@ func _on_map_generated() -> void:
 		# Optional: Add a small offset to prevent overlap
 		$Tower.global_position += Vector2(-30, -30)
 	
-	if has_node("PickableItem"):
-		$PickableItem.global_position = world_pos
+	if has_node("PickableAxe"):
+		$PickableAxe.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
-		$PickableItem.global_position += Vector2(30, 30)
+		$PickableAxe.global_position += Vector2(30, 30)
+		
+	if has_node("PickablePickaxe"):
+		$PickablePickaxe.global_position = world_pos
+		# Optional: Add a small offset to prevent overlap
+		$PickablePickaxe.global_position += Vector2(-30, 30)
