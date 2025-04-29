@@ -16,12 +16,14 @@ func _init():
 
 func use(character) -> bool:
 	if character.has_method("restore_health"):
+		print("resotring health")
 		character.restore_health(health_restore)
 	
 	if character.has_method("restore_stamina"):
 		character.restore_stamina(stamina_restore)
 	
 	if character.has_method("restore_hunger"):
+		print("resotring hunger")
 		character.restore_hunger(hunger_restore)
 	
 	if character.has_method("restore_thirst"):

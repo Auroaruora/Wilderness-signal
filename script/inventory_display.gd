@@ -204,6 +204,8 @@ func _on_slot_gui_input(event, index):
 			print("Using food item: ", selected_item.id)
 			## Remove the item from inventory
 			inventory.remove_item(selected_item)
+			var character = get_parent().get_parent()
+			selected_item.use(character)
 
 func _on_slot_mouse_entered(index):
 	if inventory and index < inventory.items.size():

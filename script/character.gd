@@ -293,6 +293,53 @@ func get_luminosity():#
 # Add this function to your Character class
 #endregion
 
+
+#region Health and Hunger Management
+func restore_health(amount: int) -> void:
+	# Find the health system component
+	var health_system = get_node_or_null("HealthSystem")
+	
+	# Only restore health if health system exists
+	if health_system:
+		# Calculate the new health, ensuring it doesn't exceed max health
+		var new_health = min(
+			health_system.current_health + amount, 
+			health_system.max_health
+		)
+		
+		# Update the current health
+		health_system.current_health = new_health
+		
+		# Emit the health changed signal
+		health_system.emit_signal("health_changed", new_health)
+		
+		print("Restored %d health. Current health: %d" % [amount, new_health])
+	else:
+		print("Cannot restore health: No HealthSystem found")
+
+func restore_hunger(amount: int) -> void:
+	# Find the hunger system component
+	var hunger_system = get_node_or_null("HungerSystem")
+	
+	# Only restore hunger if hunger system exists
+	if hunger_system:
+		# Calculate the new hunger value, ensuring it doesn't exceed max hunger
+		var new_hunger = min(
+			hunger_system.current_hunger + amount, 
+			hunger_system.max_hunger
+		)
+		
+		# Update the current hunger
+		hunger_system.current_hunger = new_hunger
+		
+		# Emit the hunger changed signal
+		hunger_system.emit_signal("hunger_changed", new_hunger)
+		
+		print("Restored %d hunger. Current hunger: %d" % [amount, new_hunger])
+	else:
+		print("Cannot restore hunger: No HungerSystem found")
+#endregion
+
 #region Death and Resurrection System
 func die() -> void:
 	# Only die if not already dead
