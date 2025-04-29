@@ -6,6 +6,7 @@ extends Node2D
 @export var seed: int = 0
 @export var map_width: int = 100
 @export var map_height: int = 100
+@export var player_spawn_cell: Vector2i = Vector2i(0, 0)
 @export var player_scene: PackedScene
 
 
@@ -20,7 +21,6 @@ func _ready():
 	map.generate_map(map_width, map_height)
 
 func _on_map_generated() -> void:
-	var player_spawn_cell := Vector2i(0, 0)
 	var search_radius = 20
 	var center_x = map_width / 2
 	var center_y = map_height / 2
@@ -56,33 +56,3 @@ func _on_map_generated() -> void:
 		$PickableItem.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
 		$PickableItem.global_position += Vector2(30, 30)
-
-func _on_tunnel_used():
-	player.save_state_to_global()
-	var health = player.get_node_or_null("HealthSystem").current_health
-	var hunger = player.get_node_or_null("HungerSystem").current_hunger
-	Global.save_player_state(health, hunger, player.inventory.items)
-	call_deferred("_deferred_load_dungeon")
-
-func _deferred_load_dungeon():
-	var dungeon = load("res://scenes/dungeon.tscn").instantiate()
-	get_tree().root.add_child(dungeon)
-	get_tree().root.remove_child.call_deferred(self)
-
-func _on_dungeon_exited():
-	var state = Global.load_player_state()
-	player.get_node_or_null("HealthSystem").current_health = state["health"]
-	player.get_node_or_null("HungerSystem").current_hunger = state["hunger"]
-	
-	player.inventory.items.clear()
-	
-	for item in state["inventory"]:
-		if item is Resource:
-			var copied_item = item.duplicate(true)
-			player.inventory.items.append(copied_item)
-	
-
-	if player.inventory_display:
-		player.inventory_display.update_inventory_display()
-	
-	get_tree().root.add_child(self)

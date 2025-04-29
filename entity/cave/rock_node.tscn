@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/rock_node.gd" id="1_f0k30"]
 [ext_resource type="Texture2D" uid="uid://dmbu7tses6pan" path="res://assets/enviorment/Rocks_source_no_shadow.png" id="1_ljm0s"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="2_cbqdl"]
-[ext_resource type="Resource" uid="uid://bnpp8euwtfyxp" path="res://resources/material/iron.tres" id="3_5lfpo"]
+[ext_resource type="Resource" uid="uid://bnpp8euwtfyxp" path="res://resources/material/stone.tres" id="3_5lfpo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkata"]
 radius = 26.0

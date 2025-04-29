@@ -382,13 +382,3 @@ func finish_resurrection() -> void:
 	
 	print("Character resurrection complete with blinking effect")
 #endregion
-
-func save_state_to_global():
-	var health_system = get_node("HealthSystem")
-	var hunger_system = get_node("HungerSystem")
-	Global.save_player_state(
-		health_system.current_health,
-		hunger_system.current_hunger,
-		inventory.items
-	)
-	print("角色物品栏数据：", inventory.items)
