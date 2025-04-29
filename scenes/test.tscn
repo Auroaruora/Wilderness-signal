@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="6_w52ky"]
 [ext_resource type="Resource" uid="uid://cc08vlfq2vpi2" path="res://resources/tools/pickaxe.tres" id="7_igowu"]
 [ext_resource type="PackedScene" uid="uid://wqiu74qgtg3y" path="res://entity/cave/iron_node.tscn" id="8_qax3h"]
-[ext_resource type="PackedScene" uid="uid://cqi730nrl5x2p" path="res://entity/forest/barries_bush.tscn" id="9_sas67"]
+[ext_resource type="PackedScene" uid="uid://cqi730nrl5x2p" path="res://entity/grass/barries_bush.tscn" id="9_sas67"]
 
 [node name="test" type="Node2D"]
 
