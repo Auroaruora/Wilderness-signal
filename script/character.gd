@@ -60,8 +60,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle action inputs
 	if event.is_action_pressed("interact") and inventory.get_selected_item_name()=="axe":
-		#and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
-		attempt_action("axe")  # You can extend this to multiple actions easily
+		attempt_action("axe")
+	if event.is_action_pressed("interact") and inventory.get_selected_item_name()=="pickaxe":
+		attempt_action("pickaxe") 
 		
 func _physics_process(delta: float) -> void:
 	# Check health status first - only process movement if alive
@@ -107,6 +108,11 @@ func setup_action_handlers() -> void:
 		"hammer",
 		func(): print("Hammering action"),  # This will be overridden by the tower
 		"hammer_"  # Animation prefix
+	)
+	add_action(
+		"pickaxe",
+		func(): print("pickaxing action"),  # This will be overridden by the tower
+		"pickaxe_"  # Animation prefix
 	)
 
 func add_action(action_name: String, action: Callable, animation_prefix: String) -> void:

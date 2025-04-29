@@ -32,7 +32,6 @@ func attempt_repair():
 		# Modify the action handling to work with the existing attempt_action method
 		player_ref.add_action(
 			"tower_repair",  # Unique action name
-			func(): return true,  # Always allow this action once we reach this point
 			func(): consume_wood_and_repair(),  # What happens on completion
 			"hammer_"  # Animation prefix
 		)

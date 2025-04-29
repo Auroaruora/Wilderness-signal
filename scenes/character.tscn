@@ -896,9 +896,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1jx5u")
 }],
-"loop": true,
+"loop": false,
 "name": &"pickaxe_down",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -919,9 +919,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pw715")
 }],
-"loop": true,
+"loop": false,
 "name": &"pickaxe_left",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -942,9 +942,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nflxy")
 }],
-"loop": true,
+"loop": false,
 "name": &"pickaxe_right",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -965,9 +965,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_omu47")
 }],
-"loop": true,
+"loop": false,
 "name": &"pickaxe_up",
-"speed": 5.0
+"speed": 13.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1095,7 +1095,9 @@ script = ExtResource("1_t3h3h")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qv582")
-animation = &"axe_down"
+animation = &"pickaxe_left"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -4)

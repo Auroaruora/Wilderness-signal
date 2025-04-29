@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c7tiv4lsxvwjn" path="res://scenes/tower.tscn" id="5_87ywx"]
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="6_w52ky"]
 [ext_resource type="Resource" uid="uid://cc08vlfq2vpi2" path="res://resources/tools/pickaxe.tres" id="7_igowu"]
-[ext_resource type="PackedScene" uid="uid://wqiu74qgtg3y" path="res://entity/cave/RockNode.tscn" id="8_qax3h"]
+[ext_resource type="PackedScene" uid="uid://wqiu74qgtg3y" path="res://entity/cave/rock_node.tscn" id="8_qax3h"]
+[ext_resource type="PackedScene" uid="uid://drvdh7pnccfri" path="res://entity/cave/cave_wall.tscn" id="9_07ms1"]
 
 [node name="test" type="Node2D"]
 
