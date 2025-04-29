@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://pedb26mof5g8"]
+
+[ext_resource type="Script" path="res://script/VictoryPopup.gd" id="1_p35d8"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_p35d8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.185981, 0.185981, 0.185981, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 213.0
+offset_right = 791.0
+offset_bottom = 236.0
+text = "Congratulations,  your kill all enemies. You're hero!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 341.0
+offset_right = 619.0
+offset_bottom = 372.0
+text = "replay"

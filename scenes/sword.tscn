@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7b7v8fplipi3"]
+
+[ext_resource type="Texture2D" uid="uid://3pnimnhubf6n" path="res://assets/enviorment/tilemap_packed.png" id="1_5puh4"]
+[ext_resource type="Script" path="res://script/sword.gd" id="1_ufdpk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ip6e"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_ml5ls"]
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cqaod"]
+resource_name = "swing"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -2.0944, 0.0, 2.0944, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_brbx1"]
+_data = {
+"RESET": SubResource("Animation_ml5ls"),
+"swing": SubResource("Animation_cqaod")
+}
+
+[node name="Area2D" type="Area2D" groups=["interactables"]]
+z_as_relative = false
+script = ExtResource("1_ufdpk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_2ip6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5puh4")
+centered = false
+offset = Vector2(-4.2, -13)
+region_enabled = true
+region_rect = Rect2(131.806, 128.021, 8.40526, 16.1381)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_brbx1")
+}

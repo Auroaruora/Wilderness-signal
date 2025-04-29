@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://drvdh7pnccfri"]
+[gd_scene load_steps=7 format=3 uid="uid://drvdh7pnccfri"]
 
-[ext_resource type="Script" path="res://entity/entity.gd" id="1_e87ew"]
+[ext_resource type="Script" path="res://script/StoneNode.gd" id="1_ce3j0"]
 [ext_resource type="Texture2D" uid="uid://csd3xxdi1o2bb" path="res://map/assets/dungeon_atlas.png" id="1_jj5ab"]
+[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="2_jxcjv"]
+[ext_resource type="Resource" uid="uid://cr7ixq4r80uuj" path="res://resources/material/stone.tres" id="3_qgh5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyaw7"]
 size = Vector2(16, 16)
 
-[node name="Cave Wall" type="Node2D"]
-script = ExtResource("1_e87ew")
+[sub_resource type="CircleShape2D" id="CircleShape2D_xt7mc"]
+radius = 20.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Cave Wall" type="Node2D"]
+script = ExtResource("1_ce3j0")
+pickable_stone_scene = ExtResource("2_jxcjv")
+stone_resource = ExtResource("3_qgh5a")
+
+[node name="StoneSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_jj5ab")
 region_enabled = true
 region_rect = Rect2(400, 32, 16, 16)
@@ -18,3 +25,12 @@ region_rect = Rect2(400, 32, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_hyaw7")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xt7mc")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

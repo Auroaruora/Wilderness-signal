@@ -113,7 +113,8 @@ func instantiate_scene_at_position(scene: PackedScene, at_position: Vector2):
 	var instance = scene.instantiate() as Entity
 	instance.position = at_position
 	add_child(instance)
-
+	if instance.has_signal("tunnel_used"):
+		instance.tunnel_used.connect(get_parent()._on_tunnel_used)
 func clear_map():
 	clear()
 	
@@ -147,3 +148,6 @@ func get_terrain_id_at(cell: Vector2i) -> int:
 		if noise_value > region.noise_value_cutoff:
 			return region.biome.terrain_id
 	return BaseTerrain.GRASS
+
+func _on_tunnel_used():
+	get_parent()._on_tunnel_used()
