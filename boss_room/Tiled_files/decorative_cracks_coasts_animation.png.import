@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvwl0oj1y2d"
-path="res://.godot/imported/water_details_animation.png-9a9415a70904b559e162f3dd36d1aadb.ctex"
+uid="uid://c5h85ehgagurn"
+path="res://.godot/imported/decorative_cracks_coasts_animation.png-ea27935c59162645918b27b786f8b0bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/water_details_animation.png"
-dest_files=["res://.godot/imported/water_details_animation.png-9a9415a70904b559e162f3dd36d1aadb.ctex"]
+source_file="res://boss_room/Tiled_files/decorative_cracks_coasts_animation.png"
+dest_files=["res://.godot/imported/decorative_cracks_coasts_animation.png-ea27935c59162645918b27b786f8b0bf.ctex"]
 
 [params]
 

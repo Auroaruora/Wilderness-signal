@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnv0qloww80s"
-path="res://.godot/imported/decorative_cracks_walls.png-7c6dab8fe9e69389ed4b6e30aeb87bf5.ctex"
+uid="uid://j0o1l3ab6oln"
+path="res://.godot/imported/pedestals.png-69cfb8b711e74e014d950f17311e7c6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/decorative_cracks_walls.png"
-dest_files=["res://.godot/imported/decorative_cracks_walls.png-7c6dab8fe9e69389ed4b6e30aeb87bf5.ctex"]
+source_file="res://boss_room/Tiled_files/pedestals.png"
+dest_files=["res://.godot/imported/pedestals.png-69cfb8b711e74e014d950f17311e7c6e.ctex"]
 
 [params]
 

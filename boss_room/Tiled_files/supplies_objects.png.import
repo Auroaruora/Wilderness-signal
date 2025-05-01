@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dubp6a5euslf4"
-path="res://.godot/imported/decorative_cracks_floor.png-6680f4a37ae77194853780927060d961.ctex"
+uid="uid://mvu25sel31l3"
+path="res://.godot/imported/supplies_objects.png-a7ed711fb149dc5c862aa6c007691a16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/decorative_cracks_floor.png"
-dest_files=["res://.godot/imported/decorative_cracks_floor.png-6680f4a37ae77194853780927060d961.ctex"]
+source_file="res://boss_room/Tiled_files/supplies_objects.png"
+dest_files=["res://.godot/imported/supplies_objects.png-a7ed711fb149dc5c862aa6c007691a16.ctex"]
 
 [params]
 

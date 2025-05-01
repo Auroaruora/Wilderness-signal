@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c831kmbk2a3t1"
-path="res://.godot/imported/doors_lever_chest_animation.png-ae64b6c0d1cf6430e0979f961b7ddc80.ctex"
+uid="uid://pxebhdk44562"
+path="res://.godot/imported/fire_trap.png-cca3d7af2f9fb745348712f011c78f75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/doors_lever_chest_animation.png"
-dest_files=["res://.godot/imported/doors_lever_chest_animation.png-ae64b6c0d1cf6430e0979f961b7ddc80.ctex"]
+source_file="res://boss_room/Tiled_files/fire_trap.png"
+dest_files=["res://.godot/imported/fire_trap.png-cca3d7af2f9fb745348712f011c78f75.ctex"]
 
 [params]
 

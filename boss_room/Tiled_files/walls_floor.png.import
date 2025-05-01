@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mvu25sel31l3"
-path="res://.godot/imported/supplies_objects.png-ad48499eb26f3c31fa98f968805606b9.ctex"
+uid="uid://cpbwfdf0y3pe1"
+path="res://.godot/imported/walls_floor.png-4aa79981aa39ce293f3770568cf7e8d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/supplies_objects.png"
-dest_files=["res://.godot/imported/supplies_objects.png-ad48499eb26f3c31fa98f968805606b9.ctex"]
+source_file="res://boss_room/Tiled_files/walls_floor.png"
+dest_files=["res://.godot/imported/walls_floor.png-4aa79981aa39ce293f3770568cf7e8d4.ctex"]
 
 [params]
 

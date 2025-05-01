@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpbwfdf0y3pe1"
-path="res://.godot/imported/walls_floor.png-c8c828a12af7e12c2fdf4a294c944ccf.ctex"
+uid="uid://c831kmbk2a3t1"
+path="res://.godot/imported/doors_lever_chest_animation.png-84444633e8c3722fc93a2780a270fd9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/walls_floor.png"
-dest_files=["res://.godot/imported/walls_floor.png-c8c828a12af7e12c2fdf4a294c944ccf.ctex"]
+source_file="res://boss_room/Tiled_files/doors_lever_chest_animation.png"
+dest_files=["res://.godot/imported/doors_lever_chest_animation.png-84444633e8c3722fc93a2780a270fd9a.ctex"]
 
 [params]
 

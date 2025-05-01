@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgktgn5kgc5p"
-path="res://.godot/imported/trap_plate.png-81db136d4ace604482825bc6a3ef5fc2.ctex"
+uid="uid://dubp6a5euslf4"
+path="res://.godot/imported/decorative_cracks_floor.png-f229ba8a60cfd851439c214ff1b14fd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/trap_plate.png"
-dest_files=["res://.godot/imported/trap_plate.png-81db136d4ace604482825bc6a3ef5fc2.ctex"]
+source_file="res://boss_room/Tiled_files/decorative_cracks_floor.png"
+dest_files=["res://.godot/imported/decorative_cracks_floor.png-f229ba8a60cfd851439c214ff1b14fd3.ctex"]
 
 [params]
 

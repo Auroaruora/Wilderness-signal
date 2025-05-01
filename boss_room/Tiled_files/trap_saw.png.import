@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://71bdxu8r6ilb"
-path="res://.godot/imported/fire_animation2.png-a715dbcc53ce0ce5495b0a380bac2642.ctex"
+uid="uid://ddu276fdab2xw"
+path="res://.godot/imported/trap_saw.png-2c6271e641192ab0f29839c2bfe12890.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enviorment/Tiled_files/fire_animation2.png"
-dest_files=["res://.godot/imported/fire_animation2.png-a715dbcc53ce0ce5495b0a380bac2642.ctex"]
+source_file="res://boss_room/Tiled_files/trap_saw.png"
+dest_files=["res://.godot/imported/trap_saw.png-2c6271e641192ab0f29839c2bfe12890.ctex"]
 
 [params]
 
