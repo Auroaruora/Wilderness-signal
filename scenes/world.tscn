@@ -40,7 +40,7 @@ script = ExtResource("4_y1vtl")
 stream = ExtResource("8_3u8oe")
 autoplay = true
 
-[node name="CollisionShape2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
 shape = SubResource("WorldBoundaryShape2D_376ug")
