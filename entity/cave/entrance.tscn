@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://csd3xxdi1o2bb" path="res://map/assets/dungeon_atlas.png" id="2_akuf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quaas"]
-size = Vector2(15, 13)
+size = Vector2(24, 21)
 
 [node name="entrance" type="Area2D"]
 script = ExtResource("1_fch4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_akuf1")
 region_enabled = true
 region_rect = Rect2(320, 16, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_quaas")
