@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://br1rg4n27w1om"]
+
+[ext_resource type="PackedScene" uid="uid://37v0x57nde8s" path="res://boss_room/room_map.tscn" id="1_51sw5"]
+[ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="2_5a8ye"]
+[ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="3_f4qbs"]
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_51sw5")]
+
+[node name="Character" parent="." instance=ExtResource("2_5a8ye")]
+position = Vector2(229, 418)
+
+[node name="PlayerCamera" parent="." instance=ExtResource("3_f4qbs")]
+visible = false

@@ -53,6 +53,7 @@ func _ready() -> void:
 	# Initialize default animations
 	setup_action_handlers()
 	play_idle_animation()
+	#GameManager.register_player(self)
 
 	$InventoryUI/InventoryDisplay.inventory = $InventoryUI/InventoryDisplay/Inventory
 	print("Connected inventory to display")

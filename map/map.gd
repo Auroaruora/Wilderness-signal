@@ -19,6 +19,7 @@ enum BaseTerrain {
 @export var cave_noise: FastNoiseLite
 
 var max_north_south_bias: float = .7
+var entrance_spawned = false
 
 func _ready():
 	update_seed()
@@ -57,6 +58,8 @@ func generate_map(width: int, height: int, x_offset: int = 0, y_offset: int = 0)
 	light_map.recalculate_outdoor_lightmap()
 	light_map.render_lightmap()
 	generation_finished.emit()
+	spawn_cave_entrance()
+
 
 func _find_biome(id: int) -> Biome:
 	for r in biome_regions:
@@ -147,3 +150,33 @@ func get_terrain_id_at(cell: Vector2i) -> int:
 		if noise_value > region.noise_value_cutoff:
 			return region.biome.terrain_id
 	return BaseTerrain.GRASS
+
+func spawn_cave_entrance():
+	if entrance_spawned:
+		return
+	entrance_spawned = true
+	var cave_cells: Array[Vector2i] = []
+	var used_positions: Dictionary = {}
+
+	for child in get_children():
+		if child is Entity:
+			used_positions[local_to_map(child.position)] = true
+
+	for x in get_used_cells(0):
+		var tile_data = get_cell_tile_data(0, x)
+		var terrain_id = -1
+		if tile_data and tile_data.terrain != null:
+			terrain_id = tile_data.terrain
+		if terrain_id == BaseTerrain.CAVE and not used_positions.has(x):
+			var local_pos = map_to_local(x)
+			if cave_noise.get_noise_2d(local_pos.x, local_pos.y) > 0.22:
+				cave_cells.append(x)
+
+	if cave_cells.size() > 0:
+		var selected_cell = cave_cells[randi() % cave_cells.size()]
+		var entrance_pos = map_to_local(selected_cell)
+		
+		var entrance_scene = preload("res://entity/cave/entrance.tscn")
+		var instance = entrance_scene.instantiate()
+		instance.position = entrance_pos
+		add_child(instance)
