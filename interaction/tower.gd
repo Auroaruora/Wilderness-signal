@@ -11,11 +11,13 @@ class_name RepairableTower extends StaticBody2D
 
 var is_broken = true
 var player_ref = null
+var win_screen = null
 
 func _ready():
 	# Set initial state
 	broken_sprite.visible = true
 	repaired_sprite.visible = false
+	create_win_screen()
 
 func _process(delta):
 	# Check for player input when in range
@@ -66,7 +68,7 @@ func repair_tower():
 	broken_sprite.visible = false
 	repaired_sprite.visible = true
 	is_broken = false
-	
+	show_win_screen()
 	# Optional: Play a repair sound
 	# $RepairSound.play()
 
@@ -77,3 +79,53 @@ func _on_interaction_area_body_entered(body):
 func _on_interaction_area_body_exited(body):
 	if body is Character and player_ref == body:
 		player_ref = null
+# New functions for the win screen
+func create_win_screen():
+	# Create a CanvasLayer to show UI on top of everything
+	win_screen = CanvasLayer.new()
+	win_screen.layer = 10  # High layer number to be on top
+	
+	# Create a Control node for the UI
+	var control = Control.new()
+	control.anchor_right = 1.0
+	control.anchor_bottom = 1.0
+	control.name = "WinControl" # Give it a name for easier reference
+	
+	# Create a ColorRect for background
+	var background = ColorRect.new()
+	background.color = Color(0, 0, 0, 0.7)  # Semi-transparent black
+	background.anchor_right = 1.0
+	background.anchor_bottom = 1.0
+	
+	# Create Label for "YOU WIN"
+	var label = Label.new()
+	label.text = "YOU WIN"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.anchor_right = 1.0
+	label.anchor_bottom = 1.0
+	
+	# Set font size and make it bold
+	var font_size = 48
+	label.add_theme_font_size_override("font_size", font_size)
+	label.add_theme_constant_override("outline_size", 2)
+	label.add_theme_color_override("font_color", Color(1, 1, 1))  # White text
+	label.add_theme_color_override("font_outline_color", Color(0, 0, 0))  # Black outline
+	
+	# Add everything to the scene
+	control.add_child(background)
+	control.add_child(label)
+	win_screen.add_child(control)
+	
+	# Hide it initially
+	control.visible = false
+	
+	# Add to scene tree
+	add_child(win_screen)
+	
+	# Store a reference to the control for showing/hiding
+	win_screen = control
+	
+func show_win_screen():
+	if win_screen:
+		win_screen.visible = true
