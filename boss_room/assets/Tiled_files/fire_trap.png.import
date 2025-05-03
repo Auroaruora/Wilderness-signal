@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmnv0qloww80s"
-path="res://.godot/imported/decorative_cracks_walls.png-fb80d0441c803ebcfad4049c9d608f02.ctex"
+uid="uid://pxebhdk44562"
+path="res://.godot/imported/fire_trap.png-33ccd40da5d63135f70bcf1b4aff96a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/decorative_cracks_walls.png"
-dest_files=["res://.godot/imported/decorative_cracks_walls.png-fb80d0441c803ebcfad4049c9d608f02.ctex"]
+source_file="res://boss_room/assets/Tiled_files/fire_trap.png"
+dest_files=["res://.godot/imported/fire_trap.png-33ccd40da5d63135f70bcf1b4aff96a3.ctex"]
 
 [params]
 

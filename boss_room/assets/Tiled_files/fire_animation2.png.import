@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk41mxbn211p"
-path="res://.godot/imported/Water_coasts_animation.png-f9877fcd38dd0358b0c85dd1e3bfe477.ctex"
+uid="uid://71bdxu8r6ilb"
+path="res://.godot/imported/fire_animation2.png-d5b8af76615fa275b3eafce2d03158a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/Water_coasts_animation.png"
-dest_files=["res://.godot/imported/Water_coasts_animation.png-f9877fcd38dd0358b0c85dd1e3bfe477.ctex"]
+source_file="res://boss_room/assets/Tiled_files/fire_animation2.png"
+dest_files=["res://.godot/imported/fire_animation2.png-d5b8af76615fa275b3eafce2d03158a5.ctex"]
 
 [params]
 

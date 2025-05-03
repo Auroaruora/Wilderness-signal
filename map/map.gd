@@ -39,11 +39,8 @@ func generate_map(width: int, height: int, x_offset: int = 0, y_offset: int = 0)
 		for x in range(width):
 			var cell = Vector2i(x + x_offset, y + y_offset)
 		
-			if x == 0 or x == width - 1 or y == height - 1:
+			if x == 0 or y == 0 or x == width - 1 or y == height - 1:
 				_place_biome(cell, deep_water_biome)
-				continue
-			elif x == 1 or x == width - 2 or y == height - 2:
-				_place_biome(cell, water_biome)
 				continue
 			var noise_value = noise.get_noise_2d(cell.x, cell.y) + current_bias
 			light_map.add_position(cell)
@@ -144,12 +141,28 @@ func _on_player_moved_tiles(previous_position: Vector2i, new_position: Vector2i,
 	light_map.remove_light(previous_position)
 	light_map.add_light(new_position, player_instance.get_luminosity())
 
-func get_terrain_id_at(cell: Vector2i) -> int:
-	for region in biome_regions:
-		var noise_value = noise.get_noise_2d(cell.x, cell.y)
-		if noise_value > region.noise_value_cutoff:
-			return region.biome.terrain_id
-	return BaseTerrain.GRASS
+#func get_terrain_id_at(cell: Vector2i) -> int:
+	#for region in biome_regions:
+		#var noise_value = noise.get_noise_2d(cell.x, cell.y)
+		#if noise_value > region.noise_value_cutoff:
+			#return region.biome.terrain_id
+	#return BaseTerrain.GRASS
+	
+func find_spawn_cell() -> Vector2i:
+	var valid_cells: Array[Vector2i] = []
+
+	for cell in get_used_cells(0):
+		var tile_data = get_cell_tile_data(0, cell)
+		if tile_data and tile_data.terrain != null:
+			var terrain_id = tile_data.terrain
+			if terrain_id == BaseTerrain.GRASS or terrain_id == BaseTerrain.SAND:
+				valid_cells.append(cell)
+
+	if valid_cells.size() > 0:
+		return valid_cells[randi() % valid_cells.size()]
+	else:
+		push_error("No valid spawn cell found!")
+		return Vector2i.ZERO
 
 func spawn_cave_entrance():
 	if entrance_spawned:
@@ -176,7 +189,7 @@ func spawn_cave_entrance():
 		var selected_cell = cave_cells[randi() % cave_cells.size()]
 		var entrance_pos = map_to_local(selected_cell)
 		
-		var entrance_scene = preload("res://entity/cave/entrance.tscn")
+		var entrance_scene = preload("res://interaction/entrance.tscn")
 		var instance = entrance_scene.instantiate()
 		instance.position = entrance_pos
 		add_child(instance)

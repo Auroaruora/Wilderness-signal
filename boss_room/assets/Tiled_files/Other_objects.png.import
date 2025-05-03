@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvwl0oj1y2d"
-path="res://.godot/imported/water_details_animation.png-90f9215c556b6d809af572b68cd936c1.ctex"
+uid="uid://cpjhr8m3p8htx"
+path="res://.godot/imported/Other_objects.png-6ee9c09db524673b211d47f5d63091b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/water_details_animation.png"
-dest_files=["res://.godot/imported/water_details_animation.png-90f9215c556b6d809af572b68cd936c1.ctex"]
+source_file="res://boss_room/assets/Tiled_files/Other_objects.png"
+dest_files=["res://.godot/imported/Other_objects.png-6ee9c09db524673b211d47f5d63091b7.ctex"]
 
 [params]
 

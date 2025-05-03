@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpjhr8m3p8htx"
-path="res://.godot/imported/Other_objects.png-0ba6b97c47310c55ec979faaa5383161.ctex"
+uid="uid://cgqno400ckv3q"
+path="res://.godot/imported/Character_sheet.png-3edf9d17fff8a69f913dcd3f5a8ef468.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/Other_objects.png"
-dest_files=["res://.godot/imported/Other_objects.png-0ba6b97c47310c55ec979faaa5383161.ctex"]
+source_file="res://boss_room/assets/Character_sheet.png"
+dest_files=["res://.godot/imported/Character_sheet.png-3edf9d17fff8a69f913dcd3f5a8ef468.ctex"]
 
 [params]
 

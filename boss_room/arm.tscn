@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://c05j6nx0finyh"]
+
+[ext_resource type="Texture2D" uid="uid://cu8gad4hu2noe" path="res://boss_room/assets/weapon PNG/arm_projectile_glowing.png" id="1_g3fmh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77m5l"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bigrj"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eywbv"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qogrs"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsq0a"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okafg"]
+atlas = ExtResource("1_g3fmh")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13l5c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77m5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bigrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eywbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qogrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsq0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okafg")
+}],
+"loop": true,
+"name": &"glowing",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxufc"]
+radius = 6.5
+
+[node name="Arm" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-24, 12)
+sprite_frames = SubResource("SpriteFrames_13l5c")
+animation = &"glowing"
+frame_progress = 0.952522
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -0.5)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_vxufc")

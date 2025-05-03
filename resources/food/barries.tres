@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodItem" load_steps=3 format=3 uid="uid://bxlqskj47yyol"]
 
-[ext_resource type="Script" path="res://script/item_food.gd" id="1_7mbrk"]
+[ext_resource type="Script" path="res://resources/item_food.gd" id="1_7mbrk"]
 [ext_resource type="Texture2D" uid="uid://dry0r81cmoq1" path="res://resources/assets/food/barries.png" id="2_0uys6"]
 
 [resource]

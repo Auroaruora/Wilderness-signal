@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mvu25sel31l3"
-path="res://.godot/imported/supplies_objects.png-a7ed711fb149dc5c862aa6c007691a16.ctex"
+uid="uid://cqvrdqu3xb5tj"
+path="res://.godot/imported/fire_animation.png-bd9d9f953dc1b8f655b74cf5ca1c9bbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/supplies_objects.png"
-dest_files=["res://.godot/imported/supplies_objects.png-a7ed711fb149dc5c862aa6c007691a16.ctex"]
+source_file="res://boss_room/assets/Tiled_files/fire_animation.png"
+dest_files=["res://.godot/imported/fire_animation.png-bd9d9f953dc1b8f655b74cf5ca1c9bbc.ctex"]
 
 [params]
 

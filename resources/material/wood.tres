@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaterialItem" load_steps=3 format=3 uid="uid://c32xg3benxfwh"]
 
-[ext_resource type="Script" path="res://script/item_material.gd" id="1_ppj2u"]
+[ext_resource type="Script" path="res://resources/item_material.gd" id="1_ppj2u"]
 [ext_resource type="Texture2D" uid="uid://boumbvn08wrt6" path="res://resources/assets/material/wood.png" id="2_k8bqq"]
 
 [resource]

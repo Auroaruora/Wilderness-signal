@@ -13,7 +13,6 @@ var player_ref = null
 func _ready():
 	add_to_group("stones")
 	stone_sprite.visible = true
-	print("Stone initialized")
 
 func _on_interaction_area_body_entered(body):
 	if body is Character:

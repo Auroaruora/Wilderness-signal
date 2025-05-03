@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://wqiu74qgtg3y"]
 
-[ext_resource type="Script" path="res://script/iron_node.gd" id="1_de32p"]
-[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://scenes/pickable_item.tscn" id="2_3k7d5"]
+[ext_resource type="Script" path="res://interaction/iron_node.gd" id="1_de32p"]
+[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="2_3k7d5"]
 [ext_resource type="Resource" uid="uid://bnpp8euwtfyxp" path="res://resources/material/iron.tres" id="3_lblc5"]
 [ext_resource type="Texture2D" uid="uid://cfruxwkmfy53r" path="res://assets/enviorment/craftpix-net-106469-top-down-crystals-pixel-art/PNG/Assets/Black_crystal1.png" id="4_yhlo7"]
 [ext_resource type="Texture2D" uid="uid://okrxi7mju8d6" path="res://assets/enviorment/craftpix-net-106469-top-down-crystals-pixel-art/PNG/Assets/Black_crystal2.png" id="5_358v2"]

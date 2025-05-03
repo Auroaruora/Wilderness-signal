@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pxebhdk44562"
-path="res://.godot/imported/fire_trap.png-cca3d7af2f9fb745348712f011c78f75.ctex"
+uid="uid://cpbwfdf0y3pe1"
+path="res://.godot/imported/walls_floor.png-b063b8514fe5c87cac73f36c9f64d7f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://boss_room/Tiled_files/fire_trap.png"
-dest_files=["res://.godot/imported/fire_trap.png-cca3d7af2f9fb745348712f011c78f75.ctex"]
+source_file="res://boss_room/assets/Tiled_files/walls_floor.png"
+dest_files=["res://.godot/imported/walls_floor.png-b063b8514fe5c87cac73f36c9f64d7f2.ctex"]
 
 [params]
 

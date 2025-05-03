@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkpc150hl4a6h"]
 
-[ext_resource type="Script" path="res://script/enter.gd" id="1_fch4d"]
+[ext_resource type="Script" path="res://interaction/enter.gd" id="1_fch4d"]
 [ext_resource type="Texture2D" uid="uid://csd3xxdi1o2bb" path="res://map/assets/dungeon_atlas.png" id="2_akuf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quaas"]
