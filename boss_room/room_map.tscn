@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=4 uid="uid://37v0x57nde8s"]
 
-[ext_resource type="Texture2D" uid="uid://cpbwfdf0y3pe1" path="res://boss_room/Tiled_files/walls_floor.png" id="1_r7dvk"]
-[ext_resource type="Texture2D" uid="uid://dubp6a5euslf4" path="res://boss_room/Tiled_files/decorative_cracks_floor.png" id="2_s40iy"]
-[ext_resource type="Texture2D" uid="uid://dmnv0qloww80s" path="res://boss_room/Tiled_files/decorative_cracks_walls.png" id="3_7bfv8"]
-[ext_resource type="Texture2D" uid="uid://j0o1l3ab6oln" path="res://boss_room/Tiled_files/pedestals.png" id="4_o5yd4"]
-[ext_resource type="Texture2D" uid="uid://cpjhr8m3p8htx" path="res://boss_room/Tiled_files/Other_objects.png" id="5_3h303"]
-[ext_resource type="Texture2D" uid="uid://ddgwwuxd843uv" path="res://boss_room/Tiled_files/Objects.png" id="6_7madd"]
-[ext_resource type="Texture2D" uid="uid://mvu25sel31l3" path="res://boss_room/Tiled_files/supplies_objects.png" id="7_pcnw5"]
+[ext_resource type="Texture2D" uid="uid://cpbwfdf0y3pe1" path="res://boss_room/assets/Tiled_files/walls_floor.png" id="1_r7dvk"]
+[ext_resource type="Texture2D" uid="uid://dubp6a5euslf4" path="res://boss_room/assets/Tiled_files/decorative_cracks_floor.png" id="2_s40iy"]
+[ext_resource type="Texture2D" uid="uid://dmnv0qloww80s" path="res://boss_room/assets/Tiled_files/decorative_cracks_walls.png" id="3_7bfv8"]
+[ext_resource type="Texture2D" uid="uid://j0o1l3ab6oln" path="res://boss_room/assets/Tiled_files/pedestals.png" id="4_o5yd4"]
+[ext_resource type="Texture2D" uid="uid://cpjhr8m3p8htx" path="res://boss_room/assets/Tiled_files/Other_objects.png" id="5_3h303"]
+[ext_resource type="Texture2D" uid="uid://ddgwwuxd843uv" path="res://boss_room/assets/Tiled_files/Objects.png" id="6_7madd"]
+[ext_resource type="Texture2D" uid="uid://mvu25sel31l3" path="res://boss_room/assets/Tiled_files/supplies_objects.png" id="7_pcnw5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxhyt"]
 texture = ExtResource("1_r7dvk")
