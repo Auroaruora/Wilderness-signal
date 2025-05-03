@@ -58,7 +58,7 @@ func _unhandled_input(event):
 
 func is_player_close() -> bool:
 	var is_close = player_ref.is_close_to_object(global_position, interaction_distance)
-	print("Checking player distance. Is player close: ", is_close)
+	#print("Checking player distance. Is player close: ", is_close)
 	return is_close
 	
 func harvest_bush():

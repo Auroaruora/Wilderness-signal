@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://de2c4d7ehlj68"]
+[gd_scene load_steps=11 format=3 uid="uid://de2c4d7ehlj68"]
 
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="1_87eck"]
 [ext_resource type="PackedScene" uid="uid://ggaxlea8gisp" path="res://entity/forest/choppable_tree.tscn" id="2_kbfqp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cc08vlfq2vpi2" path="res://resources/tools/pickaxe.tres" id="7_igowu"]
 [ext_resource type="PackedScene" uid="uid://wqiu74qgtg3y" path="res://entity/cave/iron_node.tscn" id="8_qax3h"]
 [ext_resource type="PackedScene" uid="uid://cqi730nrl5x2p" path="res://entity/grass/barries_bush.tscn" id="9_sas67"]
+[ext_resource type="PackedScene" uid="uid://dkpc150hl4a6h" path="res://interaction/entrance.tscn" id="10_y50ma"]
 
 [node name="test" type="Node2D"]
 
@@ -36,3 +37,6 @@ position = Vector2(247, 307)
 
 [node name="BarriesBush" parent="." instance=ExtResource("9_sas67")]
 position = Vector2(235, 380)
+
+[node name="entrance" parent="." instance=ExtResource("10_y50ma")]
+position = Vector2(192, 414)

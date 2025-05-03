@@ -3,7 +3,8 @@ extends Node
 
 # Persistent player data
 var player_inventory_data: Array = []
-#var player_health: float = 100.0
+var player_health: float = 0
+var player_hunger: float = 0
 var player_position: Vector2 = Vector2.ZERO
 
 ## Save inventory data
@@ -109,6 +110,7 @@ func load_inventory(inventory: Inventory):
 			inventory.add_item(item)
 	
 	print("Inventory loaded: ", inventory.items)
+
 func create_item_from_data(item_data: Dictionary) -> Item:
 	var item: Item = null
 	
@@ -193,6 +195,40 @@ func save_player_state(player: Character):
 	# Save inventory
 	save_inventory(player.inventory)
 	
+	# Save health
+	var health_system = player.get_node_or_null("HealthSystem")
+	if health_system:
+		player_health = health_system.current_health
+		print("Health saved: ", player_health)
+	
+	# Save hunger
+	var hunger_system = player.get_node_or_null("HungerSystem")
+	if hunger_system:
+		player_hunger = hunger_system.current_hunger
+		print("Hunger saved: ", player_hunger)
+	
 	## Save other player states
 	#player_health = player.health
 	#player_position = player.global_position
+
+func load_player_state(player: Character):
+	# Load inventory
+	load_inventory(player.inventory)
+	
+	# Load health
+	var health_system = player.get_node_or_null("HealthSystem")
+	if health_system:
+		health_system.current_health = player_health
+		health_system.emit_signal("health_changed", health_system.current_health)
+		print("Health loaded: ", player_health)
+	else:
+		print("Warning: No HealthSystem found on player")
+	
+	# Load hunger
+	var hunger_system = player.get_node_or_null("HungerSystem")
+	if hunger_system:
+		hunger_system.current_hunger = player_hunger
+		hunger_system.emit_signal("hunger_changed", hunger_system.current_hunger)
+		print("Hunger loaded: ", player_hunger)
+	else:
+		print("Warning: No HungerSystem found on player")
