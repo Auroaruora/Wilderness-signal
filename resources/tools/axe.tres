@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://qii2vnvxauw8"]
 
 [ext_resource type="Script" path="res://resources/item_tool.gd" id="1_jtyvo"]
-[ext_resource type="Texture2D" uid="uid://bug203yny2hlw" path="res://resources/assets/tools/08.png" id="2_s62lx"]
+[ext_resource type="Texture2D" uid="uid://bug203yny2hlw" path="res://resources/assets/tools/axe.png" id="2_plnwe"]
 
 [resource]
 script = ExtResource("1_jtyvo")
@@ -12,7 +12,8 @@ tool_type = "Pickaxe"
 efficiency = 1.0
 id = "axe"
 name = "axe"
-texture = ExtResource("2_s62lx")
+texture = ExtResource("2_plnwe")
+texture_path = "res://resources/assets/tools/axe.png"
 item_type = 1
 stackable = false
 stack_count = 1

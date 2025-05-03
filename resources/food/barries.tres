@@ -14,6 +14,7 @@ buffs = Array[String]([])
 id = "raspberry"
 name = "raspberry"
 texture = ExtResource("2_0uys6")
+texture_path = "res://resources/assets/food/barries.png"
 item_type = 0
 stackable = true
 stack_count = 1

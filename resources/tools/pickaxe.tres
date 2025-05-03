@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://cc08vlfq2vpi2"]
 
 [ext_resource type="Script" path="res://resources/item_tool.gd" id="1_sfp0t"]
-[ext_resource type="Texture2D" uid="uid://5gn44t6vo3br" path="res://resources/assets/tools/05.png" id="2_xk74i"]
+[ext_resource type="Texture2D" uid="uid://5gn44t6vo3br" path="res://resources/assets/tools/pickaxe.png" id="2_ojxwl"]
 
 [resource]
 script = ExtResource("1_sfp0t")
@@ -12,7 +12,8 @@ tool_type = "Pickaxe"
 efficiency = 1.0
 id = "pickaxe"
 name = "pickaxe"
-texture = ExtResource("2_xk74i")
+texture = ExtResource("2_ojxwl")
+texture_path = "res://resources/assets/tools/pickaxe.png"
 item_type = 1
 stackable = false
 stack_count = 1

@@ -8,6 +8,7 @@ script = ExtResource("1_pfuvv")
 id = "stone"
 name = "stone"
 texture = ExtResource("2_m0wia")
+texture_path = "res://resources/assets/material/stone.png"
 item_type = 3
 stackable = true
 stack_count = 1

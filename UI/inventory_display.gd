@@ -85,7 +85,7 @@ func update_inventory_display():
 	if not inventory:
 		print("No inventory connected to display")
 		return
-		
+	
 	# Clear all slots first
 	for slot in slots:
 		var texture_rect = slot.get_node("ItemTexture")
@@ -94,31 +94,44 @@ func update_inventory_display():
 		var stack_label = slot.get_node("StackLabel")
 		stack_label.visible = false
 	
-	# Add debug print to see what items are being processed
-	print("Inventory items: ", inventory.items)
-	
 	# Fill slots with inventory items
 	for i in range(inventory.items.size()):
 		if i >= slots.size():
 			break
-			
+		
 		var item = inventory.items[i]
 		var slot = slots[i]
 		
-		# Add debug print for each item
-		print("Processing item: ", item.id, " with stack count: ", item.stack_count)
+		# Comprehensive debugging
+		print("Item Debug Info:")
+		print("Item ID: ", item.id)
+		print("Item Resource Path: ", item.resource_path)
 		
 		# Set item texture
 		var texture_rect = slot.get_node("ItemTexture")
-		texture_rect.texture = item.texture
+		
+		# Multiple texture retrieval attempts
+		if item.texture is Texture2D:
+			texture_rect.texture = item.texture
+			print("Texture set directly from item.texture")
+		elif item.has_method("get_texture_path"):
+			var loaded_texture = load(item.get_texture_path())
+			if loaded_texture is Texture2D:
+				texture_rect.texture = loaded_texture
+				print("Texture loaded from path")
+		elif "texture_path" in item and item.texture_path:
+			var loaded_texture = load(item.texture_path)
+			if loaded_texture is Texture2D:
+				texture_rect.texture = loaded_texture
+				print("Texture loaded from texture_path")
+		else:
+			print("WARNING: No texture found for ", item.id)
 		
 		# Set stack count if applicable
 		var stack_label = slot.get_node("StackLabel")
 		if item.stackable and item.stack_count > 1:
 			stack_label.text = str(item.stack_count)
 			stack_label.visible = true
-			# Add debug print to confirm label settings
-			print("Setting stack label for ", item.id, " to: ", stack_label.text, " visible: ", stack_label.visible)
 		else:
 			stack_label.visible = false
 

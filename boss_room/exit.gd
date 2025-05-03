@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Character":
+		GlobalData.save_player_state(body)
 		call_deferred("_change_scene")
 
 func _change_scene() -> void:
