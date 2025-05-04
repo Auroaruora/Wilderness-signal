@@ -28,6 +28,7 @@ func _on_map_generated() -> void:
 	player.global_position = world_pos
 	player.map = map
 	player.moved_tiles.connect(map._on_player_moved_tiles)
+	spawn_butterfly(world_pos)
 	# NEW CODE: Set position of existing Tower and Pickable Item
 	if has_node("Tower"):
 		$Tower.global_position = world_pos
@@ -43,3 +44,12 @@ func _on_map_generated() -> void:
 		$PickablePickaxe.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
 		$PickablePickaxe.global_position += Vector2(-30, 30)
+func spawn_butterfly(spawn_pos: Vector2) -> void:
+	
+	# Load and instantiate the butterfly
+	var butterfly_scene = preload("res://butterfly.tscn")  # Update path
+	var butterfly = butterfly_scene.instantiate()
+	add_child(butterfly)
+	
+	# Position it near the player
+	butterfly.global_position = spawn_pos + Vector2(40, -40)

@@ -33,7 +33,7 @@ item_resource = ExtResource("6_nx2aw")
 position = Vector2(0, 1)
 
 [node name="PlayerCamera" type="Camera2D" parent="Character"]
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 script = ExtResource("8_ar1gp")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

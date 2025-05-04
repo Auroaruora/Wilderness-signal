@@ -192,4 +192,5 @@ func spawn_cave_entrance():
 		var entrance_scene = preload("res://interaction/entrance.tscn")
 		var instance = entrance_scene.instantiate()
 		instance.position = entrance_pos
+		instance.add_to_group("entrance")
 		add_child(instance)

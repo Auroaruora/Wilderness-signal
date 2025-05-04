@@ -20,7 +20,7 @@ class_name Butterfly
 # State variables
 var player: CharacterBody2D = null
 var entrance: Area2D = null
-var state: String = "leading"  # leading, arrived
+var state: String = "searching"  # searching, leading, arrived
 var frame_count: int = 0
 var target_velocity: Vector2 = Vector2.ZERO
 var wobble_time: float = 0.0
@@ -30,29 +30,30 @@ var player_is_moving: bool = true
 var player_moving_away: bool = false
 var hover_position: Vector2 = Vector2.ZERO
 var hover_offset: Vector2 = Vector2.ZERO
+var search_timer: float = 0.0
 
 func _ready():
 	debug_print("_ready() called")
 	
-	# Find player and entrance in the scene
+	# Find player in the scene
 	player = get_tree().get_first_node_in_group("player")
-	entrance = get_tree().get_first_node_in_group("entrance")
 	
 	debug_print("Player reference: " + str(player))
-	debug_print("Entrance reference: " + str(entrance))
 	
-	if player and entrance:
-		# Store initial player position and distance
-		last_player_pos = player.global_position
-		last_player_distance_to_entrance = player.global_position.distance_to(entrance.global_position)
-		hover_position = global_position
-		
-		# Play animation
-		animated_sprite.play("flutter")
-		debug_print("Animation started, state set to leading")
-	else:
-		push_error("Butterfly: Player or entrance not found in scene")
-		debug_print("ERROR: Player or entrance not found")
+	# Check player reference
+	if not player:
+		push_error("Butterfly: Player not found in scene")
+		debug_print("ERROR: Player not found")
+		return
+	
+	# Don't search for entrance yet, it might not exist
+	# Start animation
+	animated_sprite.play("flutter")
+	debug_print("Animation started, state set to searching")
+	
+	# Initialize position variables
+	last_player_pos = player.global_position
+	hover_position = global_position
 
 func _physics_process(delta):
 	frame_count += 1
@@ -61,9 +62,27 @@ func _physics_process(delta):
 	# Only print debug every 60 frames to avoid spam
 	var should_debug = debug && (frame_count % 60 == 0)
 	
-	if not player or not entrance:
+	if not player:
 		if should_debug:
-			debug_print("Player or entrance missing, returning")
+			debug_print("Player missing, returning")
+		return
+	
+	# Check if we found the entrance yet
+	if state == "searching":
+		search_timer += delta
+		if search_timer >= 0.5:  # Search every half second
+			search_timer = 0.0
+			entrance = get_tree().get_first_node_in_group("entrance")
+			if entrance:
+				debug_print("Found entrance: " + str(entrance))
+				state = "leading"
+				# Initialize entrance-related variables
+				last_player_distance_to_entrance = player.global_position.distance_to(entrance.global_position)
+			else:
+				debug_print("Still searching for entrance...")
+		
+		# While searching, just hover near the player
+		hover_near_player(delta)
 		return
 	
 	# Check if player is moving
@@ -92,7 +111,8 @@ func _physics_process(delta):
 		debug_print("Player is moving: " + str(player_is_moving))
 		debug_print("Player moving away from entrance: " + str(player_moving_away))
 		debug_print("Distance to player: " + str(global_position.distance_to(player.global_position)))
-		debug_print("Distance to entrance: " + str(global_position.distance_to(entrance.global_position)))
+		if entrance:
+			debug_print("Distance to entrance: " + str(global_position.distance_to(entrance.global_position)))
 	
 	match state:
 		"leading":
@@ -113,6 +133,45 @@ func _physics_process(delta):
 		"arrived":
 			if should_debug:
 				debug_print("In arrived state, waiting for despawn")
+
+func hover_near_player(delta):
+	# Simple hovering behavior while we're still searching for the entrance
+	var distance_to_player = global_position.distance_to(player.global_position)
+	
+	# Calculate wobble
+	hover_offset = Vector2(
+		sin(wobble_time * wobble_speed) * wobble_amount * 1.5,
+		cos(wobble_time * wobble_speed * 0.8) * wobble_amount
+	)
+	
+	var target_pos
+	
+	if distance_to_player > max_distance:
+		# Too far, move closer to player
+		target_pos = player.global_position + Vector2(50, -50)  # Stay slightly above and to the right
+	else:
+		# Good distance, just hover with wobble
+		target_pos = hover_position + hover_offset
+	
+	# Get direction to target
+	var dir_to_target = (target_pos - global_position).normalized()
+	
+	# Calculate desired velocity
+	var desired_velocity = dir_to_target * base_speed * 0.7  # Slower speed when just hovering
+	
+	# Smoothly transition
+	target_velocity = target_velocity.lerp(desired_velocity, smooth_factor * 0.5)
+	
+	# Set velocity and flip sprite direction
+	velocity = target_velocity
+	
+	if velocity.x < -5.0:
+		animated_sprite.flip_h = true
+	elif velocity.x > 5.0:
+		animated_sprite.flip_h = false
+	
+	# Move the butterfly
+	move_and_slide()
 
 func move_butterfly_naturally(delta):
 	# Get direction to entrance
@@ -184,7 +243,6 @@ func move_butterfly_naturally(delta):
 		debug_print("Too far from player - catching up!")
 	
 	# Smoothly transition to the desired velocity
-	# Fixed ternary operator syntax for GDScript
 	var smooth = smooth_factor * 0.5 if not player_is_moving else smooth_factor
 	target_velocity = target_velocity.lerp(desired_velocity, smooth)
 	
