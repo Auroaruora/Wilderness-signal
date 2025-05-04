@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://drvdh7pnccfri"]
 
-[ext_resource type="Script" path="res://interaction/StoneNode.gd" id="1_ce3j0"]
+[ext_resource type="Script" path="res://entity/cave/StoneNode.gd" id="1_ce3j0"]
 [ext_resource type="Texture2D" uid="uid://csd3xxdi1o2bb" path="res://map/assets/dungeon_atlas.png" id="1_jj5ab"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="2_jxcjv"]
 [ext_resource type="Resource" uid="uid://c1udpn6idri63" path="res://resources/material/stone.tres" id="3_qgh5a"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://br1rg4n27w1om"]
 
 [ext_resource type="PackedScene" uid="uid://37v0x57nde8s" path="res://boss_room/room_map.tscn" id="1_51sw5"]
-[ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://scenes/character.tscn" id="2_5a8ye"]
-[ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://scenes/player_camera.tscn" id="3_f4qbs"]
+[ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="2_5a8ye"]
+[ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://player/player_camera.tscn" id="3_f4qbs"]
 [ext_resource type="Script" path="res://boss_room/exit.gd" id="4_fkbah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sxb0"]

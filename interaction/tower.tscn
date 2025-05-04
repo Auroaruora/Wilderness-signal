@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7tiv4lsxvwjn"]
 
-[ext_resource type="Texture2D" uid="uid://ck5qwtc20aoaw" path="res://assets/enviorment/tower.png" id="1_p00mb"]
+[ext_resource type="Texture2D" uid="uid://ck5qwtc20aoaw" path="res://interaction/tower.png" id="1_p00mb"]
 [ext_resource type="Script" path="res://interaction/tower.gd" id="1_wmlhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2p7e"]

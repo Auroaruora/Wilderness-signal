@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ggaxlea8gisp"]
 
-[ext_resource type="Script" path="res://interaction/choppable_tree.gd" id="1_fgfxt"]
+[ext_resource type="Script" path="res://entity/forest/choppable_tree.gd" id="1_fgfxt"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="2_ch1mh"]
-[ext_resource type="Texture2D" uid="uid://du8a3w7m6653h" path="res://assets/enviorment/tree.png" id="2_v2sik"]
+[ext_resource type="Texture2D" uid="uid://du8a3w7m6653h" path="res://entity/assets/tree.png" id="2_v2sik"]
 [ext_resource type="Resource" uid="uid://c32xg3benxfwh" path="res://resources/material/wood.tres" id="3_u5qm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6y0u"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqi730nrl5x2p"]
 
-[ext_resource type="Script" path="res://entity/forest/barries_bush.gd" id="1_fj2wk"]
+[ext_resource type="Script" path="res://entity/grass/barries_bush.gd" id="1_fj2wk"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="2_o3qgg"]
 [ext_resource type="Resource" uid="uid://bxlqskj47yyol" path="res://resources/food/barries.tres" id="3_x8ptn"]
 [ext_resource type="Texture2D" uid="uid://s46h55mykmeb" path="res://entity/assets/barries_bush.png" id="4_ile3c"]

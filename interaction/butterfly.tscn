@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://dau2p8a680i6l"]
+
+[ext_resource type="Script" path="res://interaction/butterfly.gd" id="1_5ngut"]
+[ext_resource type="Texture2D" uid="uid://bdwki1gnhapw0" path="res://assets/butterfly.png" id="1_kycsa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3px7"]
+atlas = ExtResource("1_kycsa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7xb7"]
+atlas = ExtResource("1_kycsa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe8r2"]
+atlas = ExtResource("1_kycsa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfhlu"]
+atlas = ExtResource("1_kycsa")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkqet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3px7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7xb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe8r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfhlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfhlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe8r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7xb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3px7")
+}],
+"loop": true,
+"name": &"flutter",
+"speed": 9.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_jveil"]
+colors = PackedColorArray(0.501961, 0.8, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8trh"]
+gradient = SubResource("Gradient_jveil")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.684, 0.5)
+
+[node name="Butterfly" type="CharacterBody2D"]
+script = ExtResource("1_5ngut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jkqet")
+animation = &"flutter"
+frame_progress = 0.714733
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.34375, 0.359375)
+color = Color(0.501961, 0.8, 1, 1)
+energy = 0.49
+texture = SubResource("GradientTexture2D_a8trh")

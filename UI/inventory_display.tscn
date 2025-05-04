@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bib063ijjum55"]
 
 [ext_resource type="Script" path="res://UI/inventory_display.gd" id="1_ucp2m"]
-[ext_resource type="Texture2D" uid="uid://du7r0sqrqpjg7" path="res://assets/ui/tinyRPG_manaSoulGUI_v_1_0/20250420manaSoul9SlicesC-Sheet.png" id="2_jboqh"]
-[ext_resource type="Texture2D" uid="uid://bgug6sycfwk4g" path="res://assets/ui/tinyRPG_manaSoulGUI_v_1_0/20250420manaSoul9SlicesB-Sheet.png" id="3_f8nq7"]
+[ext_resource type="Texture2D" uid="uid://du7r0sqrqpjg7" path="res://assets/20250420manaSoul9SlicesC-Sheet.png" id="2_jboqh"]
+[ext_resource type="Texture2D" uid="uid://bgug6sycfwk4g" path="res://assets/20250420manaSoul9SlicesB-Sheet.png" id="3_f8nq7"]
 [ext_resource type="PackedScene" uid="uid://cdju363jtkpap" path="res://UI/slot.tscn" id="4_ecjys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8pgn"]
