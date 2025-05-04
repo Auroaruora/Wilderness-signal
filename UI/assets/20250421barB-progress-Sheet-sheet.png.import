@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqbulxjcpitd6"
-path="res://.godot/imported/20250421barB-progress-Sheet-sheet.png-64e2db6e808a8cb1da2bd6ae20beb038.ctex"
+path="res://.godot/imported/20250421barB-progress-Sheet-sheet.png-57f60430c0bffaf629cf2e1509c18a1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/20250421barB-progress-Sheet-sheet.png"
-dest_files=["res://.godot/imported/20250421barB-progress-Sheet-sheet.png-64e2db6e808a8cb1da2bd6ae20beb038.ctex"]
+source_file="res://UI/assets/20250421barB-progress-Sheet-sheet.png"
+dest_files=["res://.godot/imported/20250421barB-progress-Sheet-sheet.png-57f60430c0bffaf629cf2e1509c18a1d.ctex"]
 
 [params]
 

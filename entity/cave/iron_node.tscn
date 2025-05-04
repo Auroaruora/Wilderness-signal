@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://entity/cave/iron_node.gd" id="1_de32p"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="2_3k7d5"]
 [ext_resource type="Resource" uid="uid://bnpp8euwtfyxp" path="res://resources/material/iron.tres" id="3_lblc5"]
-[ext_resource type="Texture2D" uid="uid://cfruxwkmfy53r" path="res://assets/iron1.png" id="4_yhlo7"]
-[ext_resource type="Texture2D" uid="uid://okrxi7mju8d6" path="res://assets/iron2.png" id="5_358v2"]
-[ext_resource type="Texture2D" uid="uid://dojak2d0om63l" path="res://assets/iron3.png" id="6_3ihve"]
-[ext_resource type="Texture2D" uid="uid://b60wihfdhop04" path="res://assets/iron4.png" id="7_k51ps"]
+[ext_resource type="Texture2D" uid="uid://cfruxwkmfy53r" path="res://entity/assets/iron1.png" id="4_yhlo7"]
+[ext_resource type="Texture2D" uid="uid://okrxi7mju8d6" path="res://entity/assets/iron2.png" id="5_358v2"]
+[ext_resource type="Texture2D" uid="uid://dojak2d0om63l" path="res://entity/assets/iron3.png" id="6_3ihve"]
+[ext_resource type="Texture2D" uid="uid://b60wihfdhop04" path="res://entity/assets/iron4.png" id="7_k51ps"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkata"]
 radius = 22.0227

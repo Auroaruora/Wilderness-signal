@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dojak2d0om63l"
-path="res://.godot/imported/iron3.png-e0e2c00342e79eecca70713f8ed29150.ctex"
+uid="uid://bdwki1gnhapw0"
+path="res://.godot/imported/butterfly.png-1e304bb6b7e0985f3546a8c3cf8a746e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iron3.png"
-dest_files=["res://.godot/imported/iron3.png-e0e2c00342e79eecca70713f8ed29150.ctex"]
+source_file="res://interaction/butterfly.png"
+dest_files=["res://.godot/imported/butterfly.png-1e304bb6b7e0985f3546a8c3cf8a746e.ctex"]
 
 [params]
 

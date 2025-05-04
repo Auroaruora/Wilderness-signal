@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bty4jtflvjagt"
-path="res://.godot/imported/HotkeyBox_34x34.png-e37ee80212a68925f670bc5339b2f310.ctex"
+path="res://.godot/imported/HotkeyBox_34x34.png-ecdf311661b9bb5bcb1dc33d1571a451.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/HotkeyBox_34x34.png"
-dest_files=["res://.godot/imported/HotkeyBox_34x34.png-e37ee80212a68925f670bc5339b2f310.ctex"]
+source_file="res://UI/assets/HotkeyBox_34x34.png"
+dest_files=["res://.godot/imported/HotkeyBox_34x34.png-ecdf311661b9bb5bcb1dc33d1571a451.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdju363jtkpap"]
 
-[ext_resource type="Texture2D" uid="uid://bty4jtflvjagt" path="res://assets/ui/HotkeyBox_34x34.png" id="1_udd8u"]
+[ext_resource type="Texture2D" uid="uid://bty4jtflvjagt" path="res://UI/assets/HotkeyBox_34x34.png" id="1_udd8u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yi6ci"]
 

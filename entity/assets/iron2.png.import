@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk2jupkb57jny"
-path="res://.godot/imported/20250421barA-progress-Sheet-sheet.png-4dc1441d5fa9ae0843881c5e65b95d07.ctex"
+uid="uid://okrxi7mju8d6"
+path="res://.godot/imported/iron2.png-b875d3e4d4c7e016ec2820bcb0485ae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/20250421barA-progress-Sheet-sheet.png"
-dest_files=["res://.godot/imported/20250421barA-progress-Sheet-sheet.png-4dc1441d5fa9ae0843881c5e65b95d07.ctex"]
+source_file="res://entity/assets/iron2.png"
+dest_files=["res://.godot/imported/iron2.png-b875d3e4d4c7e016ec2820bcb0485ae8.ctex"]
 
 [params]
 
