@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quaas"]
 size = Vector2(24, 21)
 
-[node name="entrance" type="Area2D"]
+[node name="entrance" type="Area2D" groups=["entrance"]]
 script = ExtResource("1_fch4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

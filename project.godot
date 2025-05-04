@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wilderness signal"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/test.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GameManager="res://script/GameManager.gd"
 GlobalData="*res://script/global_data.gd"
+
+[global_group]
+
+entrance=""
+player=""
 
 [input]
 
