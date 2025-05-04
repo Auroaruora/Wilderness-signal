@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dau2p8a680i6l"]
+
+[node name="Butterfly" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Attractive Effects" type="GPUParticles2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
