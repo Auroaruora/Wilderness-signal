@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://de2c4d7ehlj68"]
+[gd_scene load_steps=13 format=3 uid="uid://de2c4d7ehlj68"]
 
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="1_by6un"]
+[ext_resource type="Script" path="res://intro_scene.gd" id="1_mm2vd"]
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://player/player_camera.tscn" id="2_v7e0f"]
 [ext_resource type="PackedScene" uid="uid://dau2p8a680i6l" path="res://interaction/butterfly.tscn" id="3_wsm7n"]
 [ext_resource type="PackedScene" uid="uid://dkpc150hl4a6h" path="res://interaction/entrance.tscn" id="4_72v6u"]
@@ -14,6 +15,7 @@
 
 [node name="test" type="Node2D"]
 position = Vector2(59, -60)
+script = ExtResource("1_mm2vd")
 
 [node name="Character" parent="." instance=ExtResource("1_by6un")]
 position = Vector2(260, 374)
