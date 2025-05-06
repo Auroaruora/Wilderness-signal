@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cum00f74tou7i"]
+[gd_scene load_steps=12 format=3 uid="uid://cum00f74tou7i"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_qhdq1"]
 [ext_resource type="PackedScene" uid="uid://ddnutwjei4ae8" path="res://map/map.tscn" id="2_amrtj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="7_hyhny"]
 [ext_resource type="Script" path="res://player/player_camera.gd" id="8_6a5m4"]
 [ext_resource type="AudioStream" uid="uid://cwiq1xwyytseb" path="res://sound/backgroundmusic/647212__kjartan_abel__boschs-garden-mythical-game-music-for-fantasy-and-ai-projects.wav" id="9_iqahe"]
+[ext_resource type="PackedScene" uid="uid://dcs3a5fw54xb6" path="res://game_map.tscn" id="10_in11h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_376ug"]
 normal = Vector2(0, 1)
@@ -44,3 +45,5 @@ autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D"]
 shape = SubResource("WorldBoundaryShape2D_376ug")
+
+[node name="GameMap" parent="." instance=ExtResource("10_in11h")]
