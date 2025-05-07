@@ -29,6 +29,7 @@ func _process(_delta):
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
+	
  
 func _physics_process(delta):
 	velocity = direction.normalized() * 40

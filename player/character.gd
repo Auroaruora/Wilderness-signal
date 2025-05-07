@@ -45,7 +45,8 @@ var blink_count: int = 0
 var blink_max: int = 6
 var blink_duration: float = 0.2
 var blink_timer: Timer
-var current_weapon = null
+#var current_weapon = null
+var is_attacking: bool = false
 #endregion
 
 
@@ -442,24 +443,29 @@ func finish_resurrection() -> void:
 	print("Character resurrection complete with blinking effect")
 #endregion
 
-func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
-		for interactable in get_tree().get_nodes_in_group("interactable"):
-			if interactable.player_in_range:
-				interactable.interact()
-				break
-
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if current_weapon:
-			attack()
-			current_weapon.attack()
+#func _input(event):
+	#if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		#for interactable in get_tree().get_nodes_in_group("interactable"):
+			#if interactable.player_in_range:
+				#interactable.interact()
+				#break
+#
+	#if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#if current_weapon:
+			#attack()
+			#current_weapon.attack()
 				
 func attack():
+	is_attacking = true
 	attack_area.monitoring = true  # Activate hitbox for this frame
 	await get_tree().create_timer(0.1).timeout  # Attack lasts 0.1 sec
 	attack_area.monitoring = false
+	is_attacking = false  # Reset the flag after attack
 	
 func on_attack_area_entered(area):
+	if not is_attacking:  # Skip if not actively attacking
+		return
+		
 	if area.name == "enemy_hitbox":
 		var enemy = area.get_parent()
 		if enemy.has_method("take_damage"):
