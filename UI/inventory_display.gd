@@ -11,7 +11,7 @@ var inventory: Inventory
 
 
 @onready var slot_container = $BackgroundPanel/SlotContainer
-@onready var tooltip = $TooltipLabel
+@onready var tooltip_panel = $TooltipPanel
 
 var slots = []
 var selected_slot = -1
@@ -35,8 +35,8 @@ func _ready():
 	
 	# Get all slot nodes
 	collect_slots()
-	# Initialize the tooltip
-	tooltip.visible = false
+	## Initialize the tooltip
+	#tooltip.visible = false
 	# Initial display update
 	update_inventory_display()
 	# Select the first slot by default
@@ -175,21 +175,16 @@ func select_slot(index: int):
 		hide_tooltip()
 
 func show_tooltip(item: Item):
-	var tooltip_text = item.id
-	
-	if item.stackable:
-		tooltip_text += " (" + str(item.stack_count) + "/" + str(item.max_stack) + ")"
-	
-	tooltip.text = tooltip_text
-	tooltip.visible = true
+	if item:
+		tooltip_panel.display_item(item)
 
 func hide_tooltip():
-	tooltip.visible = false
+	tooltip_panel.clear()
 
-func _process(delta):
-	# Update tooltip position to follow mouse
-	if tooltip.visible:
-		tooltip.global_position = get_viewport().get_mouse_position() + Vector2(10, 10)
+#func _process(delta):
+	## Update tooltip position to follow mouse
+	#if tooltip.visible:
+		#tooltip.global_position = get_viewport().get_mouse_position() + Vector2(10, 10)
 
 func _on_item_added(item):
 	update_inventory_display()

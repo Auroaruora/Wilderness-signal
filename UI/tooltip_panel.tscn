@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqorgw7ggqg72"]
+
+[ext_resource type="Script" path="res://UI/tooltip_panel.gd" id="1_8hs0k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fexvl"]
+bg_color = Color(0.917647, 0.6, 0.203922, 0.509804)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.384826, 0.213576, 0.0140215, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="TooltipPanel" type="Panel"]
+offset_right = 80.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fexvl")
+script = ExtResource("1_8hs0k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StackInfoLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
