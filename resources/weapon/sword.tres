@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://27rqirs0fict"]
+
+[ext_resource type="Script" path="res://resources/item_weapon.gd" id="1_kbuve"]
+[ext_resource type="Texture2D" uid="uid://or7dcq27g2gr" path="res://resources/assets/weapon/sword.png" id="2_0qmsj"]
+
+[resource]
+script = ExtResource("1_kbuve")
+damage = 1
+attack_speed = 1.0
+range = 1.0
+durability = 100
+max_durability = 100
+weapon_type = "Sword"
+effects = Array[String]([])
+id = "sword"
+name = "sword"
+texture = ExtResource("2_0qmsj")
+texture_path = ""
+item_type = 2
+stackable = false
+stack_count = 1
+max_stack = 1
+description = ""
+value = 0

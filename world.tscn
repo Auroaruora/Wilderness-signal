@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="7_hyhny"]
 [ext_resource type="Script" path="res://player/player_camera.gd" id="8_6a5m4"]
 [ext_resource type="AudioStream" uid="uid://cwiq1xwyytseb" path="res://sound/backgroundmusic/647212__kjartan_abel__boschs-garden-mythical-game-music-for-fantasy-and-ai-projects.wav" id="9_iqahe"]
-[ext_resource type="PackedScene" uid="uid://dcs3a5fw54xb6" path="res://game_map.tscn" id="10_in11h"]
+[ext_resource type="PackedScene" uid="uid://dcs3a5fw54xb6" path="res://map/game_map.tscn" id="10_in11h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_376ug"]
 normal = Vector2(0, 1)
