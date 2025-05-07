@@ -50,8 +50,12 @@ func _on_map_generated() -> void:  # Fixed function name
 	
 	# Initialize the game map
 	if has_node("GameMap"):
-		$GameMap.initialize(map, player)
-
+		# Pass the tower as a third parameter if it exists
+		if has_node("Tower"):
+			$GameMap.initialize(map, player, $Tower)
+		else:
+			$GameMap.initialize(map, player)
+			
 func spawn_butterfly(spawn_pos: Vector2) -> void:
 	# Load and instantiate the butterfly
 	var butterfly_scene = preload("res://interaction/butterfly.tscn")  # Update path
