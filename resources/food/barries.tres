@@ -19,5 +19,7 @@ item_type = 0
 stackable = true
 stack_count = 1
 max_stack = 20
-description = ""
+description = "Click 
+Right Mouse Button 
+to Eat"
 value = 0
