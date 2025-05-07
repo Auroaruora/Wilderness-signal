@@ -75,8 +75,3 @@ layout_mode = 2
 
 [node name="TooltipPanel" parent="." instance=ExtResource("5_q3cwm")]
 layout_mode = 0
-
-[node name="TooltipLabel" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0

@@ -175,8 +175,18 @@ func select_slot(index: int):
 		hide_tooltip()
 
 func show_tooltip(item: Item):
-	if item:
+	if item and tooltip_panel:
+		# First let tooltip panel update its content
 		tooltip_panel.display_item(item)
+		
+		# Get current slot
+		var slot = slots[selected_slot]
+		
+		# Position tooltip above the current slot
+		tooltip_panel.global_position = Vector2(
+			slot.global_position.x + (slot.size.x / 2) - (tooltip_panel.size.x / 2),  # center over slot
+			slot.global_position.y - tooltip_panel.size.y - 5  # 5 pixels above slot
+		)
 
 func hide_tooltip():
 	tooltip_panel.clear()
@@ -216,7 +226,8 @@ func _on_slot_gui_input(event, index):
 			selected_item.use(character)
 
 func _on_slot_mouse_entered(index):
-	if inventory and index < inventory.items.size():
+	# Only show tooltip if this is the selected slot
+	if inventory and index < inventory.items.size() and index == selected_slot:
 		show_tooltip(inventory.items[index])
 
 func _on_slot_mouse_exited(index):
