@@ -6,7 +6,11 @@ class_name RepairableTower extends StaticBody2D
 @onready var repaired_sprite = $RepairedSprite
 @onready var interaction_area = $InteractionArea
 
-@export var wood_required = 2
+@export var iron_required = 3
+@export var stone_required = 10
+@export var wood_required = 30
+@export var antenna_required = 1
+
 @export var interaction_distance = 40.0
 
 var is_broken = true
@@ -29,12 +33,12 @@ func is_player_close() -> bool:
 	return player_ref.is_close_to_object(global_position, interaction_distance)
 
 func attempt_repair():
-	# Check if player has enough wood
-	if player_ref.inventory.get_stack_count("wood") >= wood_required:
+	# Check if player has all required materials
+	if player_ref.inventory.get_stack_count("iron") >= iron_required and player_ref.inventory.get_stack_count("stone") >= stone_required and player_ref.inventory.get_stack_count("wood") >= wood_required and player_ref.inventory.get_stack_count("antenna") >= antenna_required:
 		# Modify the action handling to work with the existing attempt_action method
 		player_ref.add_action(
 			"tower_repair",  # Unique action name
-			func(): consume_wood_and_repair(),  # What happens on completion
+			func(): consume_materials_and_repair(),  # Changed function name
 			"hammer_"  # Animation prefix
 		)
 		
@@ -47,22 +51,37 @@ func attempt_repair():
 		
 		# Perform the hammering action using the string-based method
 		player_ref.attempt_action("tower_repair")
+	else:
+		# Optional: Add feedback that player doesn't have enough materials
+		print("Not enough materials to repair tower")
+		# You might want to add a UI notification here		player_ref.attempt_action("tower_repair")
 
-func consume_wood_and_repair():
-	# Create a temporary wood item to use with remove_item
+# With this updated function:
+func consume_materials_and_repair():
+	# Check if we can remove all items first
+	var can_remove_all = true
+	
+	# Create temporary items to check with remove_item
+	var iron_item = Item.new()
+	iron_item.id = "iron"
+
+	var stone_item = Item.new()
+	stone_item.id = "stone"
+		
 	var wood_item = Item.new()
 	wood_item.id = "wood"
-	wood_item.stackable = true
-	wood_item.stack_count = wood_required
-	wood_item.max_stack = 99  # Assuming a high max stack value
 
-	# Attempt to remove wood from inventory
-	if player_ref.inventory.remove_item(wood_item, wood_required):
-		# If wood removal is successful, repair the tower
+	var antenna_item = Item.new()
+	antenna_item.id = "antenna"
+	
+	# Attempt to remove all items
+	if player_ref.inventory.remove_item(iron_item, iron_required) and player_ref.inventory.remove_item(stone_item, stone_required) and player_ref.inventory.remove_item(wood_item, wood_required) and player_ref.inventory.remove_item(antenna_item, antenna_required):
+		# If all removals are successful, repair the tower
 		repair_tower()
 	else:
-		# This should rarely happen, but good to have a fallback
-		print("Failed to remove wood for tower repair")
+		# This should rarely happen since we check beforehand, but good to have a fallback
+		print("Failed to remove materials for tower repair")
+		
 func repair_tower():
 	# Change sprite
 	broken_sprite.visible = false

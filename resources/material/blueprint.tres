@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MaterialItem" load_steps=3 format=3 uid="uid://bwm6fkncc467n"]
+
+[ext_resource type="Script" path="res://resources/item_material.gd" id="1_2x8av"]
+[ext_resource type="Texture2D" uid="uid://c4tot3hclk2wv" path="res://resources/assets/material/blueprint.png" id="2_65qlb"]
+
+[resource]
+script = ExtResource("1_2x8av")
+id = "blueprint"
+name = "blueprint"
+texture = ExtResource("2_65qlb")
+texture_path = "res://resources/assets/material/blueprint.png"
+item_type = 0
+stackable = false
+stack_count = 1
+max_stack = 1
+description = "Repair Tower: 
+- 3 Iron
+- 10 Stone
+- 30 Wood
+- 1 Antenna"
+value = 0

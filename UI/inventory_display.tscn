@@ -75,3 +75,14 @@ layout_mode = 2
 
 [node name="TooltipPanel" parent="." instance=ExtResource("5_q3cwm")]
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 160.0
+offset_bottom = 200.0
+grow_horizontal = 1
+grow_vertical = 1

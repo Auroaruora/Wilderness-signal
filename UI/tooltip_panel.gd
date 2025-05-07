@@ -3,6 +3,7 @@ extends Panel
 
 @onready var item_name_label = $MarginContainer/VBoxContainer/ItemNameLabel
 @onready var stack_info_label = $MarginContainer/VBoxContainer/StackInfoLabel
+@onready var description_label = $MarginContainer/VBoxContainer/DescriptionLabel
 
 # Initialize
 func _ready():
@@ -26,7 +27,6 @@ func display_item(item: Item):
 	visible = true	
 	# Set item name
 	item_name_label.text = item.id
-	print(item.id)
 	
 	# Set stack info if applicable
 	if item.stackable:
@@ -34,6 +34,11 @@ func display_item(item: Item):
 		stack_info_label.visible = true
 	else:
 		stack_info_label.visible = false
+	if item.description and item.description.strip_edges() != "":
+		description_label.text = item.description
+		description_label.visible = true
+	else:
+		description_label.visible = false
 	
 	# Show the panel
 	show()

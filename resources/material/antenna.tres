@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MaterialItem" load_steps=3 format=3 uid="uid://bktambm43wra0"]
+
+[ext_resource type="Script" path="res://resources/item_material.gd" id="1_7drq8"]
+[ext_resource type="Texture2D" uid="uid://uc0gu175e157" path="res://resources/assets/material/ antenna.png" id="2_8jsw1"]
+
+[resource]
+script = ExtResource("1_7drq8")
+id = "antenna"
+name = "antenna"
+texture = ExtResource("2_8jsw1")
+texture_path = "res://resources/assets/material/ antenna.png"
+item_type = 3
+stackable = false
+stack_count = 1
+max_stack = 1
+description = ""
+value = 0
