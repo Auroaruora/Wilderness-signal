@@ -19,12 +19,10 @@ var player_ref = null
 
 func _ready():
 	add_to_group("rocks")
-	print("Rock initialized with harvest_count: ", harvest_count)
 	# Initially, only show the first stage rock
 	update_rock_appearance()
 	
 func update_rock_appearance():
-	print("Updating rock appearance. Current harvest count: ", harvest_count)
 	
 	# Hide all sprites first
 	rock_sprite_1.visible = false
@@ -36,16 +34,12 @@ func update_rock_appearance():
 	match harvest_count:
 		0: 
 			rock_sprite_1.visible = true
-			print("Rock is showing appearance 1")
 		1: 
 			rock_sprite_2.visible = true
-			print("Rock is showing appearance 2")
 		2: 
 			rock_sprite_3.visible = true
-			print("Rock is showing appearance 3")
 		3: 
 			rock_sprite_4.visible = true
-			print("Rock is showing appearance 4")
 		_: 
 			print("Rock is depleted")
 

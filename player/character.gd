@@ -24,6 +24,7 @@ enum Direction {
 #region Node References
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var inventory = $InventoryUI/InventoryDisplay/Inventory
+@onready var attack_area = $player_hitbox
 #endregion
 
 #region Export Variables
@@ -44,6 +45,7 @@ var blink_count: int = 0
 var blink_max: int = 6
 var blink_duration: float = 0.2
 var blink_timer: Timer
+var current_weapon = null
 #endregion
 
 
@@ -57,6 +59,7 @@ func _ready() -> void:
 	GlobalData.load_player_state(self)
 	$InventoryUI/InventoryDisplay.inventory = $InventoryUI/InventoryDisplay/Inventory
 	print("Connected inventory to display")
+	attack_area.area_entered.connect(on_attack_area_entered)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle action inputs
@@ -430,3 +433,47 @@ func finish_resurrection() -> void:
 	
 	print("Character resurrection complete with blinking effect")
 #endregion
+
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		for interactable in get_tree().get_nodes_in_group("interactable"):
+			if interactable.player_in_range:
+				interactable.interact()
+				break
+
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if current_weapon:
+			attack()
+			current_weapon.attack()
+				
+func attack():
+	attack_area.monitoring = true  # Activate hitbox for this frame
+	await get_tree().create_timer(0.1).timeout  # Attack lasts 0.1 sec
+	attack_area.monitoring = false
+	
+func on_attack_area_entered(area):
+	if area.name == "enemy_hitbox":
+		var bat = area.get_parent()
+		if bat.has_method("take_damage"):
+			print("Bat took damage")
+
+func pickup_weapon(weapon):
+	if current_weapon:
+		drop_weapon(current_weapon)
+	current_weapon = weapon
+	if weapon.get_parent():
+		weapon.get_parent().remove_child(weapon)
+	$WeaponSocket.add_child(weapon)
+	weapon.position = Vector2.ZERO
+	weapon.remove_from_group("interactable")
+	weapon.attached = true
+
+func drop_weapon(weapon):
+	if weapon.get_parent():
+		weapon.get_parent().remove_child(weapon)
+	#get_tree().current_scene.remove_child(weapon)
+	weapon.global_position = global_position + Vector2(0, 50)
+	# Do not allow swap between weapons after choosing one
+	# weapon.add_to_group("interactable")
+	current_weapon = null
+	weapon.attached = false

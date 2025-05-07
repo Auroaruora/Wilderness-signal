@@ -6,6 +6,10 @@ var player_inventory_data: Array = []
 var player_health: float = 0
 var player_hunger: float = 0
 var player_position: Vector2 = Vector2.ZERO
+var previous_scene: String = ""
+var return_position: Vector2 = Vector2.ZERO
+var world_seed: int = 0
+var entrance_used: bool = false
 
 ## Save inventory data
 #func save_inventory(inventory: Inventory):

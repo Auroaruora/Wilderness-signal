@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Wilderness signal"
-run/main_scene="res://intro_scene.tscn"
+run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="res://GameManager.gd"
 GlobalData="*res://global_data.gd"
+UIPrompt="*res://boss_room/UIPrompt.tscn"
 
 [display]
 

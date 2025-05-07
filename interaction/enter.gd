@@ -1,3 +1,4 @@
+# enter.gd
 extends Area2D
 
 const DUNGEON_SCENE_PATH := "res://boss_room/boss_room.tscn"
@@ -8,6 +9,11 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Character":
 		GlobalData.save_player_state(body)
+		GlobalData.previous_scene = get_tree().current_scene.scene_file_path
+		GlobalData.return_position = body.global_position
+
+		GlobalData.entrance_used = true
+		
 		call_deferred("_change_scene")
 
 func _change_scene() -> void:

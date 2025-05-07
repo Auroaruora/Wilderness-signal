@@ -17,9 +17,17 @@ func _ready():
 		map.cave_noise = FastNoiseLite.new()
 	
 	map.generation_finished.connect(_on_map_generated)
-	
+	if GlobalData.world_seed != 0:
+		seed = GlobalData.world_seed 
+		print("Load the stored seed from GlobalData: ", seed)
 	map.update_seed(seed)
+	if GlobalData.world_seed == 0:
+		GlobalData.world_seed = map.noise.seed
+		print("seed have been stored in GlobalData: ", GlobalData.world_seed)
 	map.generate_map(map_width, map_height)
+	if GlobalData.return_position != Vector2.ZERO:
+		player.global_position = GlobalData.return_position
+		GlobalData.return_position = Vector2.ZERO
 
 func _on_map_generated() -> void:  # Fixed function name
 	player_spawn_cell = map.find_spawn_cell()
@@ -30,7 +38,8 @@ func _on_map_generated() -> void:  # Fixed function name
 	player.global_position = world_pos
 	player.map = map
 	player.moved_tiles.connect(map._on_player_moved_tiles)
-	spawn_butterfly(world_pos)
+	if not GlobalData.entrance_used:
+		spawn_butterfly(world_pos)
 	
 	# NEW CODE: Set position of existing Tower and Pickable Item
 	if has_node("Tower"):
@@ -38,18 +47,18 @@ func _on_map_generated() -> void:  # Fixed function name
 		# Optional: Add a small offset to prevent overlap
 		$Tower.global_position += Vector2(-30, -30)
 	
-	if has_node("PickableAxe"):
+	if has_node("PickableAxe") and not GlobalData.entrance_used:
 		$PickableAxe.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
 		$PickableAxe.global_position += Vector2(30, 30)
 		
-	if has_node("PickablePickaxe"):
+	if has_node("PickablePickaxe") and not GlobalData.entrance_used:
 		$PickablePickaxe.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
 		$PickablePickaxe.global_position += Vector2(-30, 30)
 	
 	# Initialize the game map
-	if has_node("GameMap"):
+	if has_node("GameMap") and not GlobalData.entrance_used:
 		$GameMap.initialize(map, player)
 
 func spawn_butterfly(spawn_pos: Vector2) -> void:

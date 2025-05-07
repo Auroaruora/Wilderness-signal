@@ -165,6 +165,8 @@ func find_spawn_cell() -> Vector2i:
 		return Vector2i.ZERO
 
 func spawn_cave_entrance():
+	if GlobalData.entrance_used:
+		return 
 	if entrance_spawned:
 		return
 	entrance_spawned = true
