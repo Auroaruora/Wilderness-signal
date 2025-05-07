@@ -20,14 +20,11 @@ position = Vector2(1, -465)
 position = Vector2(235, 397)
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_f4qbs")]
-visible = false
 
 [node name="BossGolem" parent="." instance=ExtResource("4_1vvcp")]
-visible = false
 position = Vector2(234, 169)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 script = ExtResource("4_fkbah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

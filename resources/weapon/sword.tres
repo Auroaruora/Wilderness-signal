@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_kbuve")
-damage = 1
+damage = 20
 attack_speed = 1.0
 range = 1.0
 durability = 100

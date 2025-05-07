@@ -59,7 +59,8 @@ func _ready() -> void:
 	GlobalData.load_player_state(self)
 	$InventoryUI/InventoryDisplay.inventory = $InventoryUI/InventoryDisplay/Inventory
 	print("Connected inventory to display")
-	attack_area.area_entered.connect(on_attack_area_entered)
+	if not attack_area.area_entered.is_connected(on_attack_area_entered):
+		attack_area.area_entered.connect(on_attack_area_entered)
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Handle action inputs
@@ -67,6 +68,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		attempt_action("axe")
 	if event.is_action_pressed("interact") and inventory.get_selected_item_name()=="pickaxe":
 		attempt_action("pickaxe") 
+	if event.is_action_pressed("interact") and inventory.get_selected_item_name()=="sword":
+		attempt_action("sword")
 		
 func _physics_process(delta: float) -> void:
 	# Check health status first - only process movement if alive
@@ -117,6 +120,11 @@ func setup_action_handlers() -> void:
 		"pickaxe",
 		func(): print("pickaxing action"),  # This will be overridden by the tower
 		"pickaxe_"  # Animation prefix
+	)
+	add_action(
+		"sword",
+		func(): attack(),  # Call the attack function directly
+		"sword_"  # Animation prefix for sword animations
 	)
 
 func add_action(action_name: String, action: Callable, animation_prefix: String) -> void:
@@ -453,27 +461,37 @@ func attack():
 	
 func on_attack_area_entered(area):
 	if area.name == "enemy_hitbox":
-		var bat = area.get_parent()
-		if bat.has_method("take_damage"):
-			print("Bat took damage")
+		var enemy = area.get_parent()
+		if enemy.has_method("take_damage"):
+			var damage_amount = 1  # Default damage
+			
+			if inventory.get_selected_item_name() == "sword":
+				# Find sword in inventory and get its damage
+				var item = inventory.get_selected_item()
+				if item and item is WeaponItem:
+					damage_amount = item.damage
+			
+			# Apply damage to enemy
+			enemy.take_damage(damage_amount)
+			print("Enemy took", damage_amount, "damage")
 
-func pickup_weapon(weapon):
-	if current_weapon:
-		drop_weapon(current_weapon)
-	current_weapon = weapon
-	if weapon.get_parent():
-		weapon.get_parent().remove_child(weapon)
-	$WeaponSocket.add_child(weapon)
-	weapon.position = Vector2.ZERO
-	weapon.remove_from_group("interactable")
-	weapon.attached = true
-
-func drop_weapon(weapon):
-	if weapon.get_parent():
-		weapon.get_parent().remove_child(weapon)
-	#get_tree().current_scene.remove_child(weapon)
-	weapon.global_position = global_position + Vector2(0, 50)
-	# Do not allow swap between weapons after choosing one
-	# weapon.add_to_group("interactable")
-	current_weapon = null
-	weapon.attached = false
+#func pickup_weapon(weapon):
+	#if current_weapon:
+		#drop_weapon(current_weapon)
+	#current_weapon = weapon
+	#if weapon.get_parent():
+		#weapon.get_parent().remove_child(weapon)
+	#$WeaponSocket.add_child(weapon)
+	#weapon.position = Vector2.ZERO
+	#weapon.remove_from_group("interactable")
+	#weapon.attached = true
+#
+#func drop_weapon(weapon):
+	#if weapon.get_parent():
+		#weapon.get_parent().remove_child(weapon)
+	##get_tree().current_scene.remove_child(weapon)
+	#weapon.global_position = global_position + Vector2(0, 50)
+	## Do not allow swap between weapons after choosing one
+	## weapon.add_to_group("interactable")
+	#current_weapon = null
+	#weapon.attached = false

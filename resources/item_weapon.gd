@@ -15,8 +15,9 @@ func _init():
 	stackable = false
 
 func use(character) -> bool:
-	if character.has_method("equip_weapon"):
-		character.equip_weapon(self)
+	if character.has_method("attack"):
+		character.attack()
+		decrease_durability(1)
 		return true
 	return false
 	

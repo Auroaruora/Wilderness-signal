@@ -366,7 +366,7 @@ height = 42.0
 radius = 264.03
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejhgn"]
-radius = 26.0
+radius = 36.3456
 
 [node name="BossGolem" type="CharacterBody2D"]
 collision_layer = 2
@@ -456,9 +456,9 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_hpvif")
 
-[node name="PlayerHit" type="Area2D" parent="."]
+[node name="enemy_hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 shape = SubResource("CircleShape2D_ejhgn")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
@@ -490,4 +490,4 @@ script = ExtResource("11_b1iuc")
 script = ExtResource("13_my6gu")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
-[connection signal="body_entered" from="PlayerHit" to="." method="_on_player_hit_body_entered"]
+[connection signal="body_entered" from="enemy_hitbox" to="." method="_on_player_hit_body_entered"]

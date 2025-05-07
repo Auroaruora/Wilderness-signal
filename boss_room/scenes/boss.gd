@@ -34,9 +34,5 @@ func _physics_process(delta):
 	velocity = direction.normalized() * 40
 	move_and_collide(velocity * delta)
 	
-func take_damage():
-	health -= 10 - DEF
-
-
-func _on_player_hit_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func take_damage(damage_amount: int = 10):
+	health -= damage_amount - DEF
