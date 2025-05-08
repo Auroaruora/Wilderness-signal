@@ -11,76 +11,7 @@ var return_position: Vector2 = Vector2.ZERO
 var world_seed: int = 0
 var entrance_used: bool = false
 
-## Save inventory data
-#func save_inventory(inventory: Inventory):
-	#player_inventory_data.clear()
-	#
-	## Store relevant item data
-	#for item in inventory.items:
-		#var item_data = {
-			#"id": item.id,
-			#"name": item.name,
-			#"item_type": item.item_type,
-			#"stackable": item.stackable,
-			#"stack_count": item.stack_count,
-			#"max_stack": item.max_stack,
-			## Additional type-specific data
-			#"additional_data": {}
-		#}
-		#
-		## Add type-specific data based on item type
-		#match item.item_type:
-			#Item.ItemType.FOOD:
-				#var food_item = item as FoodItem
-				#item_data["additional_data"] = {
-					#"health_restore": food_item.health_restore,
-					#"stamina_restore": food_item.stamina_restore,
-					#"hunger_restore": food_item.hunger_restore,
-					#"thirst_restore": food_item.thirst_restore,
-					#"buff_duration": food_item.buff_duration,
-					#"buffs": food_item.buffs
-				#}
-			#
-			#Item.ItemType.TOOL:
-				#var tool_item = item as ToolItem
-				#item_data["additional_data"] = {
-					#"tool_type": tool_item.tool_type,
-					#"tool_strength": tool_item.tool_strength,
-					#"durability": tool_item.durability,
-					#"max_durability": tool_item.max_durability,
-					#"efficiency": tool_item.efficiency
-				#}
-			#
-			#Item.ItemType.WEAPON:
-				#var weapon_item = item as WeaponItem
-				#item_data["additional_data"] = {
-					#"weapon_type": weapon_item.weapon_type,
-					#"damage": weapon_item.damage,
-					#"attack_speed": weapon_item.attack_speed,
-					#"range": weapon_item.range,
-					#"durability": weapon_item.durability,
-					#"max_durability": weapon_item.max_durability,
-					#"effects": weapon_item.effects
-				#}
-		#
-		#player_inventory_data.append(item_data)
-	#
-	#print("Inventory saved: ", player_inventory_data)
-#
-## Load inventory data
-#func load_inventory(inventory: Inventory):
-	## Clear existing inventory
-	#inventory.items.clear()
-	#
-	## Recreate items from saved data
-	#for item_data in player_inventory_data:
-		#var new_item = create_item_from_data(item_data)
-		#
-		#if new_item:
-			#inventory.add_item(new_item)
-	#
-	#print("Inventory loaded: ", inventory.items)
-#
+
 ## Helper method to create items from saved data
 # GlobalData.gd
 func save_inventory(inventory: Inventory):

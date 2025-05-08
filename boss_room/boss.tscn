@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ce6rl3risbvmb"]
+[gd_scene load_steps=32 format=3 uid="uid://ce6rl3risbvmb"]
 
 [ext_resource type="Script" path="res://boss_room/scripts/boss.gd" id="1_he28t"]
 [ext_resource type="Texture2D" uid="uid://cgqno400ckv3q" path="res://boss_room/assets/Character_sheet.png" id="1_y5gfq"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" path="res://boss_room/scripts/ArmorBuff.gd" id="11_3weqj"]
 [ext_resource type="Script" path="res://boss_room/scripts/Dash.gd" id="11_b1iuc"]
 [ext_resource type="Script" path="res://boss_room/scripts/Death.gd" id="13_my6gu"]
+[ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="14_fomej"]
+[ext_resource type="Resource" uid="uid://bwm6fkncc467n" path="res://resources/material/blueprint.tres" id="15_kg4qb"]
+[ext_resource type="Resource" uid="uid://bktambm43wra0" path="res://resources/material/antenna.tres" id="16_7wda0"]
 
 [sub_resource type="Animation" id="Animation_ws2wo"]
 length = 0.001
@@ -502,6 +505,10 @@ script = ExtResource("11_b1iuc")
 
 [node name="Death" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("13_my6gu")
+pickable_blueprint_scene = ExtResource("14_fomej")
+pickable_antenna_scene = ExtResource("14_fomej")
+blueprint_resource = ExtResource("15_kg4qb")
+antenna_resource = ExtResource("16_7wda0")
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_player_hit_body_entered"]
