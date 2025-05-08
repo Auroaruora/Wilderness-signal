@@ -11,7 +11,24 @@ var return_position: Vector2 = Vector2.ZERO
 var world_seed: int = 0
 var entrance_used: bool = false
 
+# Add these variables to GlobalData
+var explored_areas = {}  # Dictionary to store explored map areas
 
+# Add these functions to GlobalData
+func save_map_state(game_map: GameMap):
+	# Save the explored areas from the GameMap
+	explored_areas = game_map.explored_areas.duplicate()
+	print("Map state saved: ", explored_areas.size(), " explored areas")
+
+func load_map_state(game_map: GameMap):
+	# Restore explored areas to the GameMap
+	if not explored_areas.is_empty():
+		game_map.explored_areas = explored_areas.duplicate()
+		print("Map state loaded: ", explored_areas.size(), " explored areas")
+		
+		# Force an update of the fog texture
+		game_map.update_fog_texture()
+		game_map.apply_fog_to_map()
 ## Helper method to create items from saved data
 # GlobalData.gd
 func save_inventory(inventory: Inventory):

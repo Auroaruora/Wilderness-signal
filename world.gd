@@ -58,12 +58,16 @@ func _on_map_generated() -> void:  # Fixed function name
 		$PickablePickaxe.global_position += Vector2(-30, 30)
 	
 	# Initialize the game map
-	if has_node("GameMap") and not GlobalData.entrance_used:
+	if has_node("GameMap"):
 		# Pass the tower as a third parameter if it exists
 		if has_node("Tower"):
 			$GameMap.initialize(map, player, $Tower)
 		else:
 			$GameMap.initialize(map, player)
+		
+		# Load saved map state if returning through a portal
+		if GlobalData.entrance_used:
+			GlobalData.load_map_state($GameMap)
 
 func spawn_butterfly(spawn_pos: Vector2) -> void:
 	# Load and instantiate the butterfly
