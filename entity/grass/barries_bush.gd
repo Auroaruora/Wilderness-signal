@@ -18,7 +18,7 @@ var player_ref = null
 
 func _ready():
 	add_to_group("bushes")
-	print("Berry bush initialized with harvested state: ", is_harvested)
+	#print("Berry bush initialized with harvested state: ", is_harvested)
 	update_bush_appearance()
 
 func _process(delta):

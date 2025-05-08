@@ -73,6 +73,12 @@ layout_mode = 2
 [node name="Slot8" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
 layout_mode = 2
 
+[node name="Slot9" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
+layout_mode = 2
+
+[node name="Slot10" parent="BackgroundPanel/SlotContainer" instance=ExtResource("4_ecjys")]
+layout_mode = 2
+
 [node name="TooltipPanel" parent="." instance=ExtResource("5_q3cwm")]
 layout_mode = 0
 anchors_preset = 0

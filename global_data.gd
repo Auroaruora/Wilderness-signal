@@ -30,6 +30,17 @@ func load_map_state(game_map: GameMap):
 		game_map.update_fog_texture()
 		game_map.apply_fog_to_map()
 ## Helper method to create items from saved data
+# Add to GlobalData.gd
+var entity_positions = {}  # Dictionary to store entity positions by scene name
+
+func save_entity_positions(scene_name: String, entities: Dictionary):
+	# Store positions of entities in a specific scene
+	entity_positions[scene_name] = entities
+
+func get_entity_positions(scene_name: String) -> Dictionary:
+	if entity_positions.has(scene_name):
+		return entity_positions[scene_name]
+	return {}
 # GlobalData.gd
 func save_inventory(inventory: Inventory):
 	player_inventory_data.clear()
