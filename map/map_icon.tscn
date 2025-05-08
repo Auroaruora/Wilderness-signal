@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://dutqf3e52tycy"]
+
+[ext_resource type="Texture2D" uid="uid://dy5fd681hacok" path="res://assets/map_icon.png" id="1_3q6wp"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2batu"]
+color = Color(0, 0, 0, 0)
+
+[node name="Map_icon" type="CanvasLayer"]
+
+[node name="MapButton" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -125.0
+offset_right = -85.0
+offset_bottom = -85.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_styles/panel = SubResource("StyleBoxLine_2batu")
+
+[node name="Sprite2D" type="Sprite2D" parent="MapButton"]
+position = Vector2(20.2, 19.2)
+scale = Vector2(2, 2)
+texture = ExtResource("1_3q6wp")
+
+[node name="KeyLabel" type="Label" parent="MapButton"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.5
+offset_right = 63.0
+offset_bottom = 44.5
+theme_override_font_sizes/font_size = 18
+text = "M"

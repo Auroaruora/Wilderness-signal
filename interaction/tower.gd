@@ -5,6 +5,7 @@ class_name RepairableTower extends StaticBody2D
 @onready var broken_sprite = $BrokenSprite
 @onready var repaired_sprite = $RepairedSprite
 @onready var interaction_area = $InteractionArea
+@onready var message = $message
 
 @export var iron_required = 3
 @export var stone_required = 10
@@ -21,6 +22,7 @@ func _ready():
 	# Set initial state
 	broken_sprite.visible = true
 	repaired_sprite.visible = false
+	message.visible = false
 	create_win_screen()
 
 func _process(delta):
@@ -52,8 +54,13 @@ func attempt_repair():
 		# Perform the hammering action using the string-based method
 		player_ref.attempt_action("tower_repair")
 	else:
-		# Optional: Add feedback that player doesn't have enough materials
-		print("Not enough materials to repair tower")
+		$message.visible = true
+		var t = Timer.new()
+		add_child(t)
+		t.wait_time = 3
+		t.one_shot = true
+		t.connect("timeout", func(): $message.visible = false; t.queue_free())
+		t.start()
 		# You might want to add a UI notification here		player_ref.attempt_action("tower_repair")
 
 # With this updated function:

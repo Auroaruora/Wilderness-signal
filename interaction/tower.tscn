@@ -34,5 +34,15 @@ position = Vector2(0, 23)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ssiux")
 
+[node name="message" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -71.0
+offset_right = 56.0
+offset_bottom = -37.0
+theme_override_font_sizes/font_size = 10
+text = "Not enough materials
+ to repair tower"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
