@@ -85,3 +85,5 @@ func start_flying_animation(player_body):
 	# Disable collision
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
+	if has_method("on_item_picked_up"):
+		call("on_item_picked_up")

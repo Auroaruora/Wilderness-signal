@@ -2,10 +2,13 @@ extends State
 @onready var pivot = $"../../Pivot"
 var can_transition: bool = false
  
+signal hit_l
+
 func enter():
 	super.enter()
 	await play_animation("laser_cast")
 	await play_animation("laser")
+	hit_l.emit()
 	can_transition = true
  
 func play_animation(anim_name):

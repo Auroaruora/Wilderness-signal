@@ -1,7 +1,6 @@
 class_name Character extends CharacterBody2D
 
 signal moved_tiles(previous_position: Vector2i, new_position: Vector2i, player_instance: Character)
-
 # Define enums for action states and movement directions
 #region Enums
 # Action Management
@@ -469,3 +468,14 @@ func on_attack_area_entered(area):
 			# Apply damage to enemy
 			enemy.take_damage(damage_amount)
 			print("Enemy took", damage_amount, "damage")
+
+func take_damage(amount: int) -> void:
+	print("take_damage called with:", amount)
+	var health_system = get_node_or_null("HealthSystem")
+	print("HealthSystem exists?", health_system != null)
+	if health_system:
+		health_system.current_health -= amount
+		health_system.emit_signal("health_changed", health_system.current_health)
+		print("The player has received %d damage. Current health points: %d" % [amount, health_system.current_health])
+		if health_system.current_health <= 0:
+			die()

@@ -20,4 +20,4 @@ func transition():
 			0:
 				get_parent().change_state("HomingMissile")
 			1:
-				get_parent().change_state("LaserBeam")
+				get_parent().change_state("Laser")

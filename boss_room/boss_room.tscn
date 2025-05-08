@@ -1,15 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://br1rg4n27w1om"]
+[gd_scene load_steps=8 format=3 uid="uid://br1rg4n27w1om"]
 
 [ext_resource type="PackedScene" uid="uid://37v0x57nde8s" path="res://boss_room/room_map.tscn" id="1_51sw5"]
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="2_5a8ye"]
 [ext_resource type="PackedScene" uid="uid://l70mjokotpvx" path="res://player/player_camera.tscn" id="3_f4qbs"]
-[ext_resource type="PackedScene" uid="uid://ce6rl3risbvmb" path="res://boss_room/scenes/boss.tscn" id="4_1vvcp"]
-[ext_resource type="Script" path="res://boss_room/exit.gd" id="4_fkbah"]
+[ext_resource type="PackedScene" uid="uid://ce6rl3risbvmb" path="res://boss_room/boss.tscn" id="4_1vvcp"]
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="6_sxy5d"]
-[ext_resource type="Resource" uid="uid://27rqirs0fict" path="res://resources/weapon/sword.tres" id="7_8f27c"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sxb0"]
-size = Vector2(16, 18)
+[ext_resource type="Script" path="res://boss_room/scripts/weapon.gd" id="7_wsbfg"]
+[ext_resource type="Resource" uid="uid://27rqirs0fict" path="res://resources/weapon/sword.tres" id="8_e5vlc"]
 
 [node name="BossRoom" type="Node2D"]
 position = Vector2(1, -465)
@@ -18,19 +15,15 @@ position = Vector2(1, -465)
 
 [node name="Character" parent="." instance=ExtResource("2_5a8ye")]
 position = Vector2(235, 397)
+base_luminosity = 3
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_f4qbs")]
 
-[node name="BossGolem" parent="." instance=ExtResource("4_1vvcp")]
-position = Vector2(234, 169)
-
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("4_fkbah")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(439, 440)
-shape = SubResource("RectangleShape2D_6sxb0")
+[node name="Boss" parent="." instance=ExtResource("4_1vvcp")]
+visible = false
+position = Vector2(234, 378)
 
 [node name="Weapon" parent="." instance=ExtResource("6_sxy5d")]
 position = Vector2(233, 119)
-item_resource = ExtResource("7_8f27c")
+script = ExtResource("7_wsbfg")
+item_resource = ExtResource("8_e5vlc")
