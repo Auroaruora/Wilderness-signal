@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7tiv4lsxvwjn"]
+[gd_scene load_steps=15 format=3 uid="uid://c7tiv4lsxvwjn"]
 
 [ext_resource type="Texture2D" uid="uid://ck5qwtc20aoaw" path="res://interaction/tower.png" id="1_p00mb"]
 [ext_resource type="Script" path="res://interaction/tower.gd" id="1_wmlhn"]
+[ext_resource type="Texture2D" uid="uid://dmmg7gq85si80" path="res://interaction/signal.png" id="3_6j05i"]
+[ext_resource type="AudioStream" uid="uid://bhjhipe7p2w6w" path="res://sound/radio-signal-264961.mp3" id="4_7eh5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2p7e"]
 size = Vector2(41, 24.4375)
@@ -10,8 +12,66 @@ size = Vector2(41, 24.4375)
 radius = 4.0
 height = 16.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7blq"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2m3y"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41ew8"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfd1c"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8hhs"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lsh8"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecku2"]
+atlas = ExtResource("3_6j05i")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ei2cq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7blq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2m3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41ew8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfd1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8hhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lsh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecku2")
+}],
+"loop": true,
+"name": &"signal_anim",
+"speed": 5.0
+}]
+
 [node name="Tower" type="StaticBody2D"]
 script = ExtResource("1_wmlhn")
+wood_required = 10
 
 [node name="BrokenSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_p00mb")
@@ -43,6 +103,18 @@ theme_override_font_sizes/font_size = 10
 text = "Not enough materials
  to repair tower"
 horizontal_alignment = 1
+
+[node name="Signal" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -33)
+sprite_frames = SubResource("SpriteFrames_ei2cq")
+animation = &"signal_anim"
+frame = 2
+frame_progress = 0.77316
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("4_7eh5r")
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
