@@ -40,13 +40,19 @@ func _on_map_generated() -> void:  # Fixed function name
 	player.moved_tiles.connect(map._on_player_moved_tiles)
 	if not GlobalData.entrance_used:
 		spawn_butterfly(world_pos)
-	
+		# Load saved entity positions if returning through a portal
+	var scene_path = scene_file_path  # Get current scene path
+	var saved_entities = GlobalData.get_entity_positions(scene_path)
 	# NEW CODE: Set position of existing Tower and Pickable Item
+	# Position Towerw
 	if has_node("Tower"):
-		$Tower.global_position = world_pos
-		# Optional: Add a small offset to prevent overlap
-		$Tower.global_position += Vector2(-30, -30)
-	
+		if saved_entities.has("Tower") and GlobalData.entrance_used:
+			# Use saved position
+			$Tower.global_position = saved_entities["Tower"]
+		else:
+			# First time setup - use default position
+			$Tower.global_position = world_pos + Vector2(-30, -30)
+			
 	if has_node("PickableAxe") and not GlobalData.entrance_used:
 		$PickableAxe.global_position = world_pos
 		# Optional: Add a small offset to prevent overlap
