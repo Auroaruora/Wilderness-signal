@@ -6,6 +6,9 @@ var camera_target: Node2D
 
 var dragging: bool = false
 var last_mouse_pos: Vector2 = Vector2.ZERO
+var shake_timer: float = 0.0
+var shake_strength: float = 0.0
+var shake_decay: float = 5.0
 
 func _ready():
 	if camera_target_path and has_node(camera_target_path):
@@ -32,3 +35,16 @@ func _process(_delta):
 		var mouse_pos = get_global_mouse_position()
 		global_position -= (mouse_pos - last_mouse_pos)
 		last_mouse_pos = mouse_pos
+	
+	if shake_timer > 0.0:
+		shake_timer -= _delta
+		var offset = Vector2(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength)
+		)
+		global_position += offset
+		shake_strength = lerp(shake_strength, 0.0, _delta * shake_decay)
+
+func shake(strength, duration):
+	shake_strength = strength
+	shake_timer = duration

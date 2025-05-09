@@ -471,9 +471,11 @@ func on_attack_area_entered(area):
 
 func take_damage(amount: int) -> void:
 	print("take_damage called with:", amount)
+	var camera = get_tree().current_scene.get_node("PlayerCamera")
 	var health_system = get_node_or_null("HealthSystem")
 	print("HealthSystem exists?", health_system != null)
 	if health_system:
+		camera.shake(3.0,0.15)
 		health_system.current_health -= amount
 		health_system.emit_signal("health_changed", health_system.current_health)
 		print("The player has received %d damage. Current health points: %d" % [amount, health_system.current_health])

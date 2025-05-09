@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br1rg4n27w1om"]
+[gd_scene load_steps=10 format=3 uid="uid://br1rg4n27w1om"]
 
 [ext_resource type="PackedScene" uid="uid://37v0x57nde8s" path="res://boss_room/room_map.tscn" id="1_51sw5"]
 [ext_resource type="PackedScene" uid="uid://dac4he6sdh3fu" path="res://player/character.tscn" id="2_5a8ye"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="6_sxy5d"]
 [ext_resource type="Script" path="res://boss_room/scripts/weapon.gd" id="7_wsbfg"]
 [ext_resource type="Resource" uid="uid://27rqirs0fict" path="res://resources/weapon/sword.tres" id="8_e5vlc"]
+[ext_resource type="AudioStream" uid="uid://l1dlugsuuxeq" path="res://sound/backgroundmusic/boss_bgm.mp3" id="8_wg2x6"]
+[ext_resource type="AudioStream" uid="uid://dos517jcurt7k" path="res://sound/boss_appear.wav" id="9_vd8qd"]
 
 [node name="BossRoom" type="Node2D"]
 position = Vector2(1, -465)
@@ -27,3 +29,10 @@ position = Vector2(234, 378)
 position = Vector2(233, 119)
 script = ExtResource("7_wsbfg")
 item_resource = ExtResource("8_e5vlc")
+
+[node name="bgm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_wg2x6")
+parameters/looping = true
+
+[node name="QuakeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_vd8qd")

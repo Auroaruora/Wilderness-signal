@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var melee = get_node("FiniteStateMachine/MeleeAttack")
 @onready var laser = get_node("FiniteStateMachine/Laser")
 
+
 signal hit_player
 signal hit_laser
  
@@ -24,11 +25,12 @@ var health = 100:
 		elif value <= progress_bar.max_value / 2 and DEF == 0:
 			DEF = 5
 			find_child("FiniteStateMachine").change_state("ArmorBuff") 
-			
+
 func _ready():
 	melee.hit_p.connect(melee_hit)
 	laser.hit_l.connect(laser_hit)
 	set_physics_process(false)
+	progress_bar.modulate.a = 0.0
  
 func _process(_delta):
 	if not is_active:
@@ -60,10 +62,11 @@ func laser_hit():
 	if not is_active:
 		return
 	if is_instance_valid(player):
-		player.take_damage(15)
+		player.take_damage(6)
 
 func activate():
 	is_active = true
 	set_physics_process(true)
 	set_process(true)
 	visible = true
+	progress_bar.modulate.a = 1.0

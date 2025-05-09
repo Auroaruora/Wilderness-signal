@@ -7,6 +7,8 @@ func enter():
 	super.enter()
 	animation_player.play("range_attack")
 	await animation_player.animation_finished
+	var sfx = get_parent().get_parent().get_node_or_null("Audio_shoot")
+	sfx.play()
 	shoot()
 	can_transition = true
  

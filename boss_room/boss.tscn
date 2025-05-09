@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ce6rl3risbvmb"]
+[gd_scene load_steps=35 format=3 uid="uid://ce6rl3risbvmb"]
 
 [ext_resource type="Script" path="res://boss_room/scripts/boss.gd" id="1_he28t"]
 [ext_resource type="Texture2D" uid="uid://cgqno400ckv3q" path="res://boss_room/assets/Character_sheet.png" id="1_y5gfq"]
@@ -16,6 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="14_fomej"]
 [ext_resource type="Resource" uid="uid://bwm6fkncc467n" path="res://resources/material/blueprint.tres" id="15_kg4qb"]
 [ext_resource type="Resource" uid="uid://bktambm43wra0" path="res://resources/material/antenna.tres" id="16_7wda0"]
+[ext_resource type="AudioStream" uid="uid://dm71nr3ierc7m" path="res://sound/laser.mp3" id="17_4cfyx"]
+[ext_resource type="AudioStream" uid="uid://dk1ptjjaikjks" path="res://sound/shoot.wav" id="18_vglay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1187x"]
+size = Vector2(249, 19)
 
 [sub_resource type="Animation" id="Animation_ws2wo"]
 length = 0.001
@@ -404,6 +409,13 @@ texture = ExtResource("2_hf2cd")
 vframes = 15
 frame = 1
 
+[node name="LaserArea" type="Area2D" parent="Pivot"]
+position = Vector2(-2, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/LaserArea"]
+position = Vector2(124.5, -17.5)
+shape = SubResource("RectangleShape2D_1187x")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qpvlo")
@@ -455,6 +467,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Label" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -49.0
 offset_right = 20.0
@@ -510,5 +523,13 @@ pickable_antenna_scene = ExtResource("14_fomej")
 blueprint_resource = ExtResource("15_kg4qb")
 antenna_resource = ExtResource("16_7wda0")
 
+[node name="Audio_laser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_4cfyx")
+
+[node name="Audio_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_vglay")
+
+[connection signal="body_entered" from="Pivot/LaserArea" to="FiniteStateMachine/Laser" method="_on_laser_area_body_entered"]
+[connection signal="body_exited" from="Pivot/LaserArea" to="FiniteStateMachine/Laser" method="_on_laser_area_body_exited"]
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_player_hit_body_entered"]
