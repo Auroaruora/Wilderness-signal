@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://haqxic332nqf" path="res://resources/pickable_item.tscn" id="6_sxy5d"]
 [ext_resource type="Script" path="res://boss_room/scripts/weapon.gd" id="7_wsbfg"]
 [ext_resource type="Resource" uid="uid://27rqirs0fict" path="res://resources/weapon/sword.tres" id="8_e5vlc"]
-[ext_resource type="AudioStream" uid="uid://l1dlugsuuxeq" path="res://sound/backgroundmusic/boss_bgm.mp3" id="8_wg2x6"]
+[ext_resource type="AudioStream" uid="uid://bh1jtcs7gqn0p" path="res://sound/backgroundmusic/boss_bgm.mp3" id="8_wg2x6"]
 [ext_resource type="AudioStream" uid="uid://dos517jcurt7k" path="res://sound/boss_appear.wav" id="9_vd8qd"]
 
 [node name="BossRoom" type="Node2D"]
