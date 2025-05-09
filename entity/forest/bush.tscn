@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://o3raaupolh7r" path="res://entity/assets/bush.tres" id="2_8vhgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xs2x"]
-size = Vector2(9, 7.5)
+size = Vector2(10, 7.5)
 
 [node name="Spruce Tree" type="Node2D"]
 script = ExtResource("1_cy011")
@@ -18,5 +18,5 @@ region_rect = Rect2(256, 240, 16, 16)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -4.25)
+position = Vector2(1, -3.25)
 shape = SubResource("RectangleShape2D_0xs2x")

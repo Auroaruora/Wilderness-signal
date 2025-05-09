@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://blikxpbokvqx6"]
+
+[ext_resource type="Script" path="res://entity/entity.gd" id="1_2ukqk"]
+[ext_resource type="Texture2D" uid="uid://dkh8krga8bsw" path="res://entity/assets/grass.tres" id="2_j1opj"]
+
+[node name="Spruce Tree" type="Node2D"]
+script = ExtResource("1_2ukqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("2_j1opj")
+offset = Vector2(0, -4)
+region_rect = Rect2(256, 240, 16, 16)
