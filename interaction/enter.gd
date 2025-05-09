@@ -9,8 +9,15 @@ func _ready() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.name == "Character":
 		# Save all entity positions
-		var main_scene = get_tree().current_scene
-		var scene_path = main_scene.scene_file_path
+# Find the main scene
+		var main_scene = get_parent()
+		while main_scene != null and not main_scene.has_node("Tower") and not main_scene.has_node("GameMap"):
+			main_scene = main_scene.get_parent()
+		
+		if main_scene == null:
+			print("ERROR: Could not find main scene")
+			return
+		var scene_path = "res://world.tscn"
 		var entities = {}
 		
 		# Save any important entities' positions

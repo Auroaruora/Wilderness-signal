@@ -1,14 +1,14 @@
 [gd_scene load_steps=175 format=3 uid="uid://dac4he6sdh3fu"]
 
-[ext_resource type="Texture2D" uid="uid://dfgngpeo0vnva" path="res://assets/characters/idle.png" id="1_1usea"]
+[ext_resource type="Texture2D" uid="uid://dus8xw8mhe40c" path="res://assets/characters/idle.png" id="1_1usea"]
 [ext_resource type="Script" path="res://player/character.gd" id="1_t3h3h"]
-[ext_resource type="Texture2D" uid="uid://3gg3u251hrxn" path="res://assets/characters/run.png" id="2_k23vb"]
-[ext_resource type="Texture2D" uid="uid://j3rpp8uljptp" path="res://assets/characters/axe.png" id="2_qlx4k"]
-[ext_resource type="Texture2D" uid="uid://bb3atq2xde1dw" path="res://assets/characters/hammer.png" id="3_d17td"]
-[ext_resource type="Texture2D" uid="uid://bwm1gl4puas82" path="res://assets/characters/death.png" id="3_n8sij"]
-[ext_resource type="Texture2D" uid="uid://chm4g7up665vf" path="res://assets/characters/pickaxe.png" id="5_8m3t4"]
+[ext_resource type="Texture2D" uid="uid://wvu3xkve2pe7" path="res://assets/characters/run.png" id="2_k23vb"]
+[ext_resource type="Texture2D" uid="uid://d05xh44ncxa2s" path="res://assets/characters/axe.png" id="2_qlx4k"]
+[ext_resource type="Texture2D" uid="uid://xwcehrxecqut" path="res://assets/characters/hammer.png" id="3_d17td"]
+[ext_resource type="Texture2D" uid="uid://bmje773goyuvu" path="res://assets/characters/death.png" id="3_n8sij"]
+[ext_resource type="Texture2D" uid="uid://bhb4yynwqxxp0" path="res://assets/characters/pickaxe.png" id="5_8m3t4"]
 [ext_resource type="Script" path="res://UI/inventory.gd" id="5_kiqmf"]
-[ext_resource type="Texture2D" uid="uid://n1o6h16arrb0" path="res://assets/characters/sword.png" id="8_ebjtn"]
+[ext_resource type="Texture2D" uid="uid://cpi3rrrlikit2" path="res://assets/characters/sword.png" id="8_ebjtn"]
 [ext_resource type="PackedScene" uid="uid://bib063ijjum55" path="res://UI/inventory_display.tscn" id="8_tlohn"]
 [ext_resource type="PackedScene" uid="uid://cv85um35dllay" path="res://UI/status_display.tscn" id="8_vpj0g"]
 
@@ -1297,14 +1297,13 @@ shape = SubResource("RectangleShape2D_wrj47")
 layer = 10
 
 [node name="StatusDisplay" parent="InventoryUI" instance=ExtResource("8_vpj0g")]
-current_health = 100.0
-current_hunger = 100.0
+current_health = 2.0
+current_hunger = 0.0
 
 [node name="InventoryDisplay" parent="InventoryUI" instance=ExtResource("8_tlohn")]
 
 [node name="Inventory" type="Node" parent="InventoryUI/InventoryDisplay"]
 script = ExtResource("5_kiqmf")
-max_items = 8
 
 [node name="player_hitbox" type="Area2D" parent="."]
 
